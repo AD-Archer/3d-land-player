@@ -1,0 +1,27 @@
+/* Site Header */
+
+#header{
+    text-align: center;
+    background-blend-mode: normal;
+    background-image: linear-gradient(red,rgb(86, 46, 46))
+}
+
+h1{
+    font: arial;
+    color: #f0f8ff;
+}
+
+/* Body */
+body{
+    background: rgb(221, 92, 92);
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar{
+    flex: 1;
+    background-color: black;
+    padding: 30px;
+}
