@@ -181,10 +181,17 @@ iframe {
 }
 
 p {
-    font-size: 10px;
+    font-size: 6px;
 }
 
 #playlistSelector {
     background-color: #e67e22; /* Darker orange for a pop of color */
     font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+}
+
+#description{
+    font-size: 10px;
+    text-align: center;
+    color: white;
+    
 }
