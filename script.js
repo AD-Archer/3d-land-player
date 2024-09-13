@@ -85,7 +85,7 @@ const videoData = [
         "fact": "Featured a variety of music genres to highlight the DSi's multimedia features."
     },
     {
-        "url": "https://www.youtube.com/playlist?list=PLUt3xyJNAi09IlqdYfqFAbqK7Ais2EsLQ",
+        "url": "https://www.youtube.com/embed/videoseries?si=in9XjNN52AsvlVpU&amp;list=PLUt3xyJNAi09IlqdYfqFAbqK7Ais2EsLQ",
         "name": "3DS OST",
         "description": "Released in 2011. A compilation of original soundtrack music from the Nintendo 3DS games, showcasing the handheld's audio capabilities.",
         "fact": "Included tracks from various popular 3DS titles, demonstrating the range of music featured on the system."
@@ -158,18 +158,14 @@ function loadVideo() {
 
 // Event listener for Next Episode button
 nextButton.addEventListener('click', function() {
-    if (currentVideoIndex < videoData.length - 1) {
-        currentVideoIndex++;
-        loadVideo();
-    }
+    currentVideoIndex = (currentVideoIndex + 1) % videoData.length; // Loop back to the beginning
+    loadVideo();
 });
 
 // Event listener for Previous Episode button
 prevButton.addEventListener('click', function() {
-    if (currentVideoIndex > 0) {
-        currentVideoIndex--;
-        loadVideo();
-    }
+    currentVideoIndex = (currentVideoIndex - 1 + videoData.length) % videoData.length; // Loop to the end
+    loadVideo();
 });
 
 // Event listener for Playlist dropdown
