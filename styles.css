@@ -1,6 +1,16 @@
 /* Importing a playful font for a fun, retro feel */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+
+/* declaring varibles */
+:root{
+    --default-font: 'Press Start 2P', cursive;
+
+}
+
+
+
+
 /* Site Header */
 #header {
     text-align: center;
@@ -8,7 +18,7 @@
     color: #ffffff; /* White text */
     padding: 20px;
     border-bottom: 5px solid #e67e22; /* Darker orange for a pop of color */
-    font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+    font-family: var(--default-font);/* Retro pixel font */
     margin-left: 220px; /* Ensure space for the sidebar */
     box-sizing: border-box; /* Ensure padding is included in the width */
 }
@@ -25,7 +35,7 @@ body {
     background-color: #3498db; /* Bright blue background */
     margin: 0;
     padding: 0;
-    font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+    font-family: var(--default-font); /* Retro pixel font */
     color: #ffffff; /* White text for readability */
 }
 
@@ -131,7 +141,7 @@ iframe {
     cursor: pointer;
     font-size: 16px;
     margin: 0 10px;
-    font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+    font-family: var(--default-font); /* Retro pixel font */
     text-shadow: 2px 2px #2e4053; /* Text shadow for 3D effect */
 }
 
@@ -147,7 +157,7 @@ iframe {
     background: #e74c3c; /* Red footer background */
     color: #fff; /* White text */
     border-top: 5px solid #c0392b; /* Dark red top border */
-    font-family: 'Press Start 2P', cursive;
+    font-family: var(--default-font);
     margin-top: 20px;
     margin-left: 220px; /* Ensure space for the sidebar */
     box-sizing: border-box; /* Ensure padding is included in width */
@@ -186,7 +196,7 @@ p {
 
 #playlistSelector {
     background-color: #e67e22; /* Darker orange for a pop of color */
-    font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+    font-family: var(--default-font); /* Retro pixel font */
 }
 
 #description{
