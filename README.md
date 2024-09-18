@@ -18,13 +18,17 @@ To get started with MMPlayer, follow these steps:
 
 - A modern web browser.
 
+## How to use
+
+- Naviate to [3D Land Player](https://ad-archer.github.io/3d-land-player/) at https://ad-archer.github.io/3d-land-player/
+
 ### Installation
 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/MMPlayer.git
-   cd MMPlayer
+   git clone https://github.com/AD-Archer/3d-land-player.git
+   cd 3d-land-player
    ```
 
 2. **Open the Project:**
