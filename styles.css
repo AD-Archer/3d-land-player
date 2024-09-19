@@ -1,42 +1,45 @@
 /* Importing a playful font for a fun, retro feel */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-
-/* declaring varibles */
-:root{
+/* Declaring variables */
+:root {
     --default-font: 'Press Start 2P', cursive;
-
+    --primary-bg: #3498db; /* Bright blue */
+    --secondary-bg: #2c3e50; /* Dark background */
+    --accent-color: #e74c3c; /* Bright red */
+    --highlight-color: #f39c12; /* Bright yellow-orange */
+    --content-bg: #2ecc71; /* Bright green */
+    --playlist-bg: #1abc9c; /* Teal */
 }
 
+/* Resetting margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-
+/* Body */
+body {
+    background-color: var(--primary-bg);
+    color: #ffffff;
+    font-family: var(--default-font);
+}
 
 /* Site Header */
 #header {
     text-align: center;
-    background: linear-gradient(to bottom, #f5b041, #f39c12); /* Bright yellow to orange gradient */
-    color: #ffffff; /* White text */
+    background: linear-gradient(to bottom, var(--highlight-color), #f39c12);
+    color: #ffffff;
     padding: 20px;
-    border-bottom: 5px solid #e67e22; /* Darker orange for a pop of color */
-    font-family: var(--default-font);/* Retro pixel font */
-    margin-left: 220px; /* Ensure space for the sidebar */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    border-bottom: 5px solid #e67e22;
 }
 
 /* Adjust header for smaller screens */
 @media (max-width: 768px) {
     #header {
-        margin-left: 0; /* Remove left margin on smaller screens */
+        padding: 15px;
     }
-}
-
-/* Body */
-body {
-    background-color: #3498db; /* Bright blue background */
-    margin: 0;
-    padding: 0;
-    font-family: var(--default-font); /* Retro pixel font */
-    color: #ffffff; /* White text for readability */
 }
 
 /* Sidebar Styles */
@@ -44,13 +47,12 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px; /* Sidebar width */
+    width: 200px;
     height: 100%;
-    background-color: #2c3e50; /* Dark background */
-    color: #ffffff; /* White text */
+    background-color: var(--secondary-bg);
+    color: #ffffff;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Shadow for a slight 3D effect */
-    box-sizing: border-box; /* Ensure padding is included in width */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Adjust sidebar for smaller screens */
@@ -59,36 +61,43 @@ body {
         width: 100%;
         height: auto;
         position: relative;
-        box-shadow: none; /* Remove shadow for small screens */
+        padding: 10px;
+        box-shadow: none;
     }
 }
 
 /* Sidebar Label and Select Styles */
 .sidebar label {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 10px;
-    display: block;
 }
 
 .sidebar select {
     width: 100%;
     padding: 10px;
     border: none;
-    border-radius: 5px; /* Rounded corners for dropdown */
-    background-color: #ffffff; /* White background for dropdown */
-    color: #000000; /* Black text */
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
     font-size: 1rem;
-    cursor: pointer;
 }
 
 /* Main Container Styles */
 .container {
-    margin-left: 220px; /* Space for sidebar */
+    margin-left: 220px;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    min-height: 100vh; /* Ensure container takes at least full viewport height */
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Adjust container for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+        padding: 10px;
+    }
 }
 
 /* Content Styles */
@@ -96,24 +105,21 @@ body {
     width: 100%;
     max-width: 800px;
     padding: 20px;
-    background-color: #2ecc71; /* Bright green for content area */
-    border: 5px solid #27ae60; /* Darker green border */
-    border-radius: 20px; /* Rounded corners for a modern touch */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
-    position: relative;
-    box-sizing: border-box; /* Ensure padding doesn't affect size */
-    margin-bottom: 20px; /* Spacing below content */
+    background-color: var(--content-bg);
+    border: 5px solid #27ae60;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
 }
 
 /* Video Wrapper Styles */
 .video-wrapper {
     position: relative;
     width: 100%;
-    max-width: 900px; /* Max width for larger screens */
-    height: 0;
-    padding-top: 75%; /* 4:3 Aspect Ratio */
-    border-radius: 10px; /* Rounded corners for the video */
-    overflow: hidden; /* Hide overflow for a cleaner look */
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #000; /* Ensure a black background behind the video */
 }
 
 /* iFrame Styles */
@@ -129,79 +135,130 @@ iframe {
 /* Button Styles */
 .controls {
     margin-top: 20px;
-    text-align: center; /* Center align buttons */
+    text-align: center;
 }
 
 #prevButton, #nextButton {
-    padding: 10px 25px;
-    border-radius: 25px; /* Rounded corners for buttons */
-    background-color: #e74c3c; /* Bright red background */
-    color: #ffffff; /* White text */
-    border: 3px solid #c0392b; /* Darker red for border */
+    padding: 12px 25px;
+    border-radius: 25px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: 3px solid #c0392b;
     cursor: pointer;
     font-size: 16px;
     margin: 0 10px;
-    font-family: var(--default-font); /* Retro pixel font */
-    text-shadow: 2px 2px #2e4053; /* Text shadow for 3D effect */
 }
 
 #prevButton:hover, #nextButton:hover {
-    background-color: #c0392b; /* Darker red for hover effect */
-    border-color: #96281b; /* Even darker red on hover */
+    background-color: #c0392b;
+    border-color: #96281b;
 }
 
 /* Footer Styles */
 #footer {
     text-align: center;
     padding: 15px;
-    background: #e74c3c; /* Red footer background */
-    color: #fff; /* White text */
-    border-top: 5px solid #c0392b; /* Dark red top border */
-    font-family: var(--default-font);
+    background: var(--accent-color);
+    color: #fff;
+    border-top: 5px solid #c0392b;
     margin-top: 20px;
-    margin-left: 220px; /* Ensure space for the sidebar */
-    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 /* Adjust footer for smaller screens */
 @media (max-width: 768px) {
     #footer {
-        margin-left: 0; /* Remove left margin on smaller screens */
+        padding: 10px;
     }
 }
 
-/* Mario-themed Icons */
-.icon {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    margin: 10px;
-}
-
-/* Description Styles */
-#videoDescription {
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #ffffff; /* White text */
-    background-color: #2c3e50; /* Darker background for contrast */
-    padding: 10px;
-    border-radius: 10px; /* Rounded corners */
-    border: 2px solid #34495e; /* Darker border */
-}
-
-p {
-    font-size: 6px;
-}
-
-#playlistSelector {
-    background-color: #e67e22; /* Darker orange for a pop of color */
-    font-family: var(--default-font); /* Retro pixel font */
-}
-
-#description{
-    font-size: 10px;
+/* Playlist Section Styles */
+.playlist-section {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: var(--playlist-bg);
+    border: 5px solid #16a085;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
     text-align: center;
-    color: white;
-    
+}
+
+.playlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Playlist Item Styles */
+.playlist-item {
+    width: 100%;
+    max-width: 180px;
+    background-color: var(--highlight-color);
+    border: 2px solid var(--content-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: left;
+    padding: 10px;
+}
+
+.playlist-item h3 {
+    font-size: 1rem;
+    margin: 0 0 10px;
+    color: var(--secondary-bg);
+}
+
+.playlist-item p {
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+/* Button Styles within playlist items */
+.playlist-item .view-playlist-button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.playlist-item .view-playlist-button:hover {
+    background-color: #c0392b;
+}
+
+/* Hide the "Choose a Playlist" button on mobile devices */
+@media (max-width: 768px) {
+    .choose-playlist-button {
+        display: none;
+    }
+}
+
+/* Adjustments for very small screens (phones in portrait mode) */
+@media (max-width: 480px) {
+    #header {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .playlist-item {
+        max-width: 100%; /* Full width on very small screens */
+    }
+
+    #footer {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
 }
