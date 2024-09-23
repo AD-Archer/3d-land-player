@@ -78,13 +78,6 @@ const videoData = [
         "image": "images/New-Super-Mario-Bros wii.jpg"
     },
     {
-        "url": "https://www.youtube.com/embed/videoseries?si=JrYPfv5y4R_m0CpW&list=PLbVPArItGSJnBkQYBuyIyMOFHDrMO_VHq",
-        "name": "New Super Mario Bros. DS",
-        "description": "Released in 2006. The first game in the New Super Mario Bros. series, featuring updated graphics and a return to classic 2D platforming.",
-        "fact": "Introduced a new multiplayer mode allowing two players to cooperate in gameplay.",
-        "image": "images/nsmb.webp"
-    },
-    {
         "url": "https://www.youtube.com/embed/videoseries?si=0N4fTwMf4krjM7M6&list=PLJ28SgoVT7NItiC5c7mbzfw6bRW19eByP",
         "name": "Nintendo Wii Music",
         "description": "Released in 2008. A rhythm game for the Wii that lets players create and perform music using motion controls.",
