@@ -9,6 +9,7 @@
 - **Video Playback:** Watch YouTube videos directly within the player.
 - **Playlist Management:** Supports multiple playlists for different Super Mario games.
 - **Video Navigation:** Control playback with previous and next video buttons.
+- **Website Themes** With a click of a button you can choose between 3 themes.
 
 ## Getting Started
 
