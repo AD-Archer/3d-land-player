@@ -34,7 +34,7 @@
     --secondary-bg: #ffb458; /* Orange for sections */
     --accent-color: #ff4d4d; /* Bright red for accents */
     --highlight-color: #ff8c00; /* Orange for highlights */
-    --content-bg: #ffffff; /* White for content background */
+    --content-bg: #ff8c00; 
     --text-color: black; /* Black text for light theme */
     --border-color: #ff4d4d; /* Border color for sections */
 }
@@ -86,6 +86,12 @@ body {
     flex-direction: column;
     justify-content: space-between;
     gap: 10px; /* Space between video and title/description */
+    color: var(--text-color);
+}
+.videoDescription, .videoName{
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 20px;
 }
 
 .playlist-section {
@@ -112,6 +118,7 @@ body {
     background-color: #000; /* Background for video wrapper */
     margin-top: 10px; /* Space above the video */
 }
+
 
 iframe {
     position: absolute;
