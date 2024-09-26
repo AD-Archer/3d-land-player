@@ -4,7 +4,7 @@
 /* Declaring variables */
 :root {
     --default-font: 'Press Start 2P', cursive;
-    --primary-bg: #3498db; /* Bright blue */
+    --primary-bg: #2c3e50; /* Bright blue */
     --secondary-bg: #2c3e50; /* Dark background */
     --accent-color: #e74c3e; /* Bright red */
     --highlight-color: #f39c12; /* Bright yellow-orange */
@@ -12,24 +12,31 @@
     --playlist-bg: #1abc9c; /* Teal */
     --base-font-size: 12px; /* Base font size */
     --larger-font-size: 20px; /* Larger font size */
+    --color: white;
+    --secondary-color: white;
 }
 
 /* Dark Theme */
 .dark-theme {
-    --primary-bg: #2c3e50;
+    --primary-bg: #1a1a1a;
     --secondary-bg: #1a1a1a;
     --accent-color: #e74c3c;
     --highlight-color: #f39c12;
     --content-bg: #444;
+    --color: rgb(255, 255, 255);
+    --secondary-color: rgb(0, 0, 0);
+
 }
 
 /* Light Theme */
 .light-theme {
-    --primary-bg: #ecf0f1; /* Light grey */
-    --secondary-bg: #7aa6e7; /* White */
-    --accent-color: #3498db; /* Blue */
-    --highlight-color: #e67e22; /* Orange */
-    --content-bg: #95e1d3; /* Light teal */
+    --primary-bg: #ffb458; /* Bright red for the main background */
+    --secondary-bg: #ffb458; /* Orange for sections */
+    --accent-color: #ff4d4d; /* Bright red for accents */
+    --highlight-color: #ff8c00; /* Orange for highlights */
+    --content-bg: #ffffff; /* White for content background */
+    --text-color: black; /* Black text for light theme */
+    --border-color: #ff4d4d; /* Border color for sections */
 }
 
 /* Global Styles */
@@ -38,7 +45,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--primary-bg);
-    color: white;
+    color: var(--color);
     font-size: var(--base-font-size); /* Set base font size */
     display: flex;
     justify-content: center;
@@ -59,6 +66,7 @@ body {
 .header {
     grid-area: 1 / 1 / 2 / 5; /* Occupies 01, 02, 03, 04 */
     background-color: var(--highlight-color);
+    color: var(--secondary-color);
     text-align: center;
     padding: 10px; /* Reduced padding for a smaller header */
     border-bottom: 5px solid #e67e22; /* Optional solid border color */
