@@ -6,20 +6,40 @@
     --default-font: 'Press Start 2P', cursive;
     --primary-bg: #3498db; /* Bright blue */
     --secondary-bg: #2c3e50; /* Dark background */
-    --accent-color: #e74c3c; /* Bright red */
+    --accent-color: #e74c3e; /* Bright red */
     --highlight-color: #f39c12; /* Bright yellow-orange */
     --content-bg: #2ecc71; /* Bright green */
     --playlist-bg: #1abc9c; /* Teal */
+    --base-font-size: 12px; /* Base font size */
+    --larger-font-size: 20px; /* Larger font size */
+}
+
+/* Dark Theme */
+.dark-theme {
+    --primary-bg: #2c3e50;
+    --secondary-bg: #1a1a1a;
+    --accent-color: #e74c3c;
+    --highlight-color: #f39c12;
+    --content-bg: #444;
+}
+
+/* Light Theme */
+.light-theme {
+    --primary-bg: #ecf0f1; /* Light grey */
+    --secondary-bg: #7aa6e7; /* White */
+    --accent-color: #3498db; /* Blue */
+    --highlight-color: #e67e22; /* Orange */
+    --content-bg: #95e1d3; /* Light teal */
 }
 
 /* Global Styles */
-/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--default-font);
     margin: 0;
     padding: 0;
-    background-color: #3498db;
+    background-color: var(--primary-bg);
     color: white;
+    font-size: var(--base-font-size); /* Set base font size */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,52 +50,48 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
     grid-template-rows: 80px 1fr 1fr 60px; /* Adjusted row heights for header and footer */
-    gap: 10px;
+    gap: 0; /* Set gap to 0 for touching elements */
     width: 100vw;
     height: 100vh;
-    padding: 10px;
 }
-
 
 /* Grid Areas */
 .header {
     grid-area: 1 / 1 / 2 / 5; /* Occupies 01, 02, 03, 04 */
-    background-color: #f39c12;
+    background-color: var(--highlight-color);
     text-align: center;
     padding: 10px; /* Reduced padding for a smaller header */
-    border-bottom: 5px solid #e67e22;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-bottom: 5px solid #e67e22; /* Optional solid border color */
 }
 
 .sidebar {
     grid-area: 2 / 1 / 4 / 2; /* Occupies 05 */
-    background-color: #2c3e50;
-    padding: 20px;
+    background-color: var(--secondary-bg);
+    padding: 10px; /* Reduced padding */
 }
 
 .playlist-viewer {
     grid-area: 2 / 2 / 3 / 4; 
-    background-color: #2ecc71;
-    padding: 20px;
+    background-color: var(--content-bg);
+    padding: 10px; /* Adjusted padding */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 50px;
+    gap: 10px; /* Space between video and title/description */
 }
-.playlist-section{
+
+.playlist-section {
     background-color: var(--secondary-bg);
     text-align: center;
-    border-radius: 30px;
+    padding: 5px; /* Space for titles */
+    border-radius: 5px; /* Add a subtle rounding for contrast */
 }
 
 .footer {
     grid-area: 4 / 1 / 5 / 5; /* Occupies 13, 14, 15, 16 */
-    background-color: #e74c3c;
+    background-color: var(--accent-color);
     text-align: center;
     padding: 10px; /* Reduced padding for a smaller footer */
-    border-top-right-radius: 50px;
-    border-top-left-radius: 50px;
 }
 
 /* Styling for elements inside each section */
@@ -85,8 +101,8 @@ body {
     padding-top: 56.25%; /* 16:9 Aspect Ratio */
     border-radius: 10px;
     overflow: hidden;
-    background-color: #000;
-    
+    background-color: #000; /* Background for video wrapper */
+    margin-top: 10px; /* Space above the video */
 }
 
 iframe {
@@ -112,41 +128,34 @@ iframe {
     display: flex;
     justify-content: center; /* Center the buttons */
     padding: 10px;
-    background-color: #2c3e50; /* Match sidebar color */
-    border-radius: 10px;
-}
-
-/* New Playlist Selector Row occupying 4, 5 */
-#button-container {
-    grid-area: 3 / 2 / 4 / 4; /* Adjusts placement to be below the playlist viewer */
-    display: flex;
-    justify-content: center; /* Center the buttons */
-    padding: 10px;
-    background-color: #2c3e50; /* Match sidebar color */
-    border-radius: 10px;
+    background-color: var(--secondary-bg); /* Match sidebar color */
 }
 
 /* Ensure buttons maintain size */
-.control-button {
-    background-color: #e74c3c;
+button {
+    background-color: var(--accent-color);
     color: white;
     border: none;
-    padding: 15px; /* Set a uniform padding */
-    font-size: 16px;
+    padding: 8px 12px; /* Adjusted padding for smaller buttons */
+    font-size: var(--base-font-size); /* Use base font size */
     cursor: pointer;
-    border-radius: 5px;
     transition: background-color 0.3s ease;
     flex: 1; /* Allow buttons to grow equally */
     margin: 0 5px; /* Space between buttons */
-    min-width: 100px; /* Minimum width for consistent sizing */
+    min-width: 80px; /* Minimum width for consistent sizing */
 }
 
+/* Media buttons */
+.control-button {
+    font-size: var(--larger-font-size);
+    font-family: var(--default-font);
+}
 
 /* Ensures all buttons have the same height */
-.control-button {
-    min-width: 100px; /* Minimum width for consistent sizing */
+.control-button:hover {
+    background-color: var(--highlight-color); /* Change color on hover */
 }
 
-.control-button:hover {
-    background-color: #f39c12; /* Change color on hover */
+#theme-switcher {
+    padding: 30px;
 }

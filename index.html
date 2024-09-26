@@ -15,18 +15,27 @@
 
         <!-- Sidebar occupying 05 -->
         <aside class="sidebar">
+            <h1>Utilities</h1>
+            <br>
             <label for="playlistSelector">Choose a Playlist:</label>
             <select id="playlistSelector"></select>
-            <p>Choose a theme</p>
-            <select name="themeSelector" id="themeSelector"></select>
+            <br>
+            <!-- theme selector -->
+            <div id="theme-switcher">
+                <h2>Choose a theme</h2>
+                <button onclick="changeTheme('default')">Default</button>
+                <button onclick="changeTheme('dark')">Dark</button>
+                <button onclick="changeTheme('light')">Light</button>
+            </div>
+            
         </aside>
 
         <!-- Playlist viewer occupying 06, 07, 10, 11 -->
-        <section class="playlist-viewer">
+        <section class="playlist-viewer">            
+            <div id="videoName">Current Video: Super Mario 3D Land Introduction</div>
             <div class="video-wrapper">
                 <iframe id="youtubeVideo" src="https://www.youtube.com/embed/T9RqTAPHOys" title="YouTube video player" allowfullscreen></iframe>
             </div>
-            <div id="videoName">Current Video: Super Mario 3D Land Introduction</div>
             <div id="videoDescription"></div>
         </section>
 

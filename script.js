@@ -210,3 +210,16 @@ window.onload = () => {
         loadVideo();
     });
 };
+
+function changeTheme(theme) {
+    // Remove existing theme classes
+    document.body.classList.remove('dark-theme', 'light-theme');
+
+    // Apply the selected theme
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+    } else if (theme === 'light') {
+        document.body.classList.add('light-theme');
+    }
+    // Default theme is applied automatically if no class is added
+}
