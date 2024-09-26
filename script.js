@@ -200,11 +200,13 @@ window.onload = () => {
 
     document.getElementById('nextButton').addEventListener('click', function() {
         currentVideoIndex = (currentVideoIndex + 1) % videoData.length; // Loop back to the beginning
+        displayRandomPlaylists()
         loadVideo();
     });
 
     document.getElementById('prevButton').addEventListener('click', function() {
         currentVideoIndex = (currentVideoIndex - 1 + videoData.length) % videoData.length; // Loop to the end
+        displayRandomPlaylists()
         loadVideo();
     });
 };
