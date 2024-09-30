@@ -10,7 +10,7 @@
     --highlight-color: #f39c12; /* Bright yellow-orange */
     --content-bg: #2ecc71; /* Bright green */
     --playlist-bg: #1abc9c; /* Teal */
-    --base-font-size: 12px; /* Base font size */
+    --base-font-size: 11px; /* Base font size */
     --larger-font-size: 20px; /* Larger font size */
     --color: white;
     --secondary-color: white;
@@ -19,7 +19,7 @@
 /* Dark Theme */
 .dark-theme {
     --primary-bg: #1a1a1a;
-    --secondary-bg: #1a1a1a;
+    --secondary-bg: #231d1d;
     --accent-color: #e74c3c;
     --highlight-color: #f39c12;
     --content-bg: #444;
@@ -196,4 +196,23 @@ button {
 #theme-switcher button {
     padding: 20px; /* Remove padding if you want buttons to reach the sides */
     border-radius: 30px;
+}
+
+/* Feedback Form Styles */
+.feedback-form-section {
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#feedbackForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between inputs */
+}
+
+/* Center text and adjust styles for headings */
+#Feedback h1, #Feedback h2 {
+    text-align: center;
 }

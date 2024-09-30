@@ -25,11 +25,35 @@
             <label for="playlistSelector">Choose a Playlist:</label>
             <select id="playlistSelector"></select>
             <div id="theme-switcher">
-                <h2>Choose a theme</h2>
+                <h2>Choose a theme: </h2>
                 <button onclick="changeTheme('default')">Default</button>
                 <button onclick="changeTheme('dark')">Dark</button>
                 <button onclick="changeTheme('light')" id="theme-button">Light</button>
             </div>
+            <br>
+            <section id="Feedback">
+                <center>
+                    <h1>Would you like to give feedback?</h1>
+                    <button id="feedbackButton" onclick="toggleFeedbackForm()">Give Feedback</button>
+                    <div id="feedbackFormSection" class="feedback-form-section" style="display: none;">
+                        <h2>Feedback Form</h2>
+                        <form id="feedbackForm">
+                            <label for="feedback">Your Feedback:</label>
+                            <textarea id="feedback" rows="4" required></textarea>
+                            
+                            <label for="feedbackName">Your Name:</label>
+                            <input type="text" id="feedbackName">
+                            
+                            <label for="feedbackEmail">Your Email:</label>
+                            <input type="email" id="feedbackEmail">
+                    
+                            <button type="submit">Submit Feedback</button>
+                        </form>
+                        <p id="feedbackResponse"></p>
+                    </div>
+                </center>
+            </section>
+            
         </aside>
 
         <section class="playlist-viewer">            
@@ -55,12 +79,7 @@
         </footer>
     </div>
 
-    <div id="user-form" style="display: none;">
-        <h2>Enter your details</h2>
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <button id="submit">Submit</button>
-    </div>
+    
 
     <script src="playlists.js"></script>
     <script src="script.js"></script>
