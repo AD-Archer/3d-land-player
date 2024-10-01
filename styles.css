@@ -193,3 +193,12 @@ button {
 #Feedback h1, #Feedback h2 {
     text-align: center;
 }
+
+#theme-switcher button {
+    width: 80px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    padding: 5px 10px; /* Control the space inside the button */
+    font-size: 12px; /* Make the text smaller */
+    border-radius: 5px; /* Optional: Makes the buttons slightly rounded */
+    margin: 5px; /* Optional: Add space between buttons */
+}

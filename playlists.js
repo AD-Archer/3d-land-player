@@ -1,3 +1,4 @@
+// Array of YouTube video URLs and information
 const videoData = [
     { 
         "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PLJGjdBsM0cguUT00NXKnQxDOpGzruSm6G", 
@@ -20,7 +21,7 @@ const videoData = [
         "fact": "It was originally a game called 'Doki Doki Panic' before being rebranded for Mario.",
         "image": "images/smb2.jpeg"
     },
-    {
+    { 
         "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PL001A1024CB49F661", 
         "name": "Super Mario Bros. 3 Playlist",
         "description": "Released in 1988. Widely considered one of the greatest video games of all time.",
@@ -33,6 +34,13 @@ const videoData = [
         "description": "Released in 2012. Focuses on coin collection and includes new features for the 3DS.",
         "fact": "It is a direct sequel to New Super Mario Bros. for the Nintendo DS.",
         "image": "images/nsmb2.png"
+    },
+    { 
+        "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PLhLQajHvNrYQ2dB4FE6qxRdrmTtmHc2Na", 
+        "name": "Super Mario Galaxy Playlist",
+        "description": "Released in 2007. Known for its gravity-defying levels and innovative gameplay.",
+        "fact": "It won numerous awards for its design and originality.",
+        "image": "images/SuperMarioGalaxy.jpg"
     },
     { 
         "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PLbcFKfjvYToUw4GsGrgOmIf4Yju2-oSiQ", 
@@ -91,5 +99,3 @@ const videoData = [
         "image": "images/3dsbox.png"
     }
 ];
-
-const yokaiwatch = [];

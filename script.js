@@ -1,52 +1,28 @@
+// Track the current video index
 let currentVideoIndex = 0;
-let currentPlaylistIndex = 0; // Track the currently selected playlist index
-let playlists = []; // Array to hold multiple playlists
-
-// Function to fetch playlist data from external file
-async function fetchPlaylists() {
-    try {
-        const response = await fetch('playlists.json'); // Adjust path as necessary
-        const data = await response.json();
-        playlists = data.music; // Assuming your playlists are inside 'music'
-        populatePlaylistSelector();
-        loadVideo();
-    } catch (error) {
-        console.error('Error fetching playlists:', error);
-    }
-}
 
 // Function to populate the playlist selector
 function populatePlaylistSelector() {
     const playlistSelector = document.getElementById('playlistSelector');
     playlistSelector.innerHTML = ''; // Clear existing options
 
-    playlists.forEach((playlist, index) => {
+    videoData.forEach((video, index) => {
         const option = document.createElement('option');
         option.value = index;
-        option.textContent = playlist.name; // Display playlist name
+        option.textContent = video.name;
         playlistSelector.appendChild(option);
-    });
-
-    // Set default to the first playlist
-    playlistSelector.value = currentPlaylistIndex;
-
-    // Add event listener for playlist selection
-    playlistSelector.addEventListener('change', (event) => {
-        currentPlaylistIndex = event.target.value;
-        currentVideoIndex = 0; // Reset to first video in the new playlist
-        loadVideo();
     });
 }
 
-// Function to load video based on currentVideoIndex and currentPlaylistIndex
+// Function to load video based on currentVideoIndex
 function loadVideo() {
-    const video = playlists[currentPlaylistIndex]; // Access selected playlist
+    const video = videoData[currentVideoIndex];
     const youtubeVideo = document.getElementById('youtubeVideo');
     const videoNameDisplay = document.getElementById('videoName');
     const videoDescriptionDisplay = document.getElementById('videoDescription');
 
     youtubeVideo.src = video.url;
-    videoNameDisplay.textContent = `Current Playlist: ${video.name}`;
+    videoNameDisplay.textContent = `Current Video: ${video.name}`;
     videoDescriptionDisplay.innerHTML = `
         <strong>Description:</strong> ${video.description} <br>
         <strong>Fun Fact:</strong> ${video.fact}
@@ -56,12 +32,11 @@ function loadVideo() {
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
 
-    prevButton.textContent = currentVideoIndex > 0 ? `Previous Playlist: ${playlists[currentVideoIndex - 1].name}` : "Previous Playlist";
-    nextButton.textContent = currentVideoIndex < playlists.length - 1 ? `Next Playlist: ${playlists[currentVideoIndex + 1].name}` : "Next Playlist";
+    prevButton.textContent = currentVideoIndex > 0 ? `Previous Video: ${videoData[currentVideoIndex - 1].name}` : "Previous Video";
+    nextButton.textContent = currentVideoIndex < videoData.length - 1 ? `Next Video: ${videoData[currentVideoIndex + 1].name}` : "Next Video";
 
-    // Save the current video index and playlist index to local storage
+    // Save the current video index to local storage
     localStorage.setItem('currentVideoIndex', currentVideoIndex);
-    localStorage.setItem('currentPlaylistIndex', currentPlaylistIndex);
 }
 
 // Function to save email and theme to local storage
@@ -104,7 +79,7 @@ function loadTheme() {
 
 // Function to get 4 random playlists
 function getRandomPlaylists(numPlaylists) {
-    const shuffled = [...playlists].sort(() => 0.5 - Math.random());
+    const shuffled = [...videoData].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, numPlaylists);
 }
 
@@ -120,7 +95,7 @@ function displayRandomPlaylists() {
 
     const randomPlaylists = getRandomPlaylists(4);
 
-    randomPlaylists.forEach((playlist) => {
+    randomPlaylists.forEach((playlist, index) => {
         const playlistItem = document.createElement('div');
         playlistItem.className = 'playlist-item';
         playlistItem.innerHTML = `
@@ -140,27 +115,35 @@ function displayRandomPlaylists() {
     });
 }
 
-// Initialize the page with the fetched data
-window.onload = function () {
-    fetchPlaylists();
-    loadUserData();
-    loadTheme();
-};
+document.getElementById('nextButton').addEventListener('click', function() {
+    currentVideoIndex = (currentVideoIndex + 1) % videoData.length; // Loop back to the beginning
+    displayRandomPlaylists();
+    loadVideo();
+});
+
+document.getElementById('prevButton').addEventListener('click', function() {
+    currentVideoIndex = (currentVideoIndex - 1 + videoData.length) % videoData.length; // Loop to the end
+    displayRandomPlaylists();
+    loadVideo();
+});
+
+
+
+
+
+
+
+
+
 
 // Initialize the page with the playlist and the first video
-window.onload = async () => {
-    await fetchPlaylists(); // Fetch playlists when the page loads
+window.onload = () => {
+    populatePlaylistSelector();
 
-    // Load the last watched video index and playlist index from local storage
+    // Load the last watched video index from local storage
     const savedVideoIndex = localStorage.getItem('currentVideoIndex');
-    const savedPlaylistIndex = localStorage.getItem('currentPlaylistIndex');
-
     if (savedVideoIndex !== null) {
         currentVideoIndex = parseInt(savedVideoIndex);
-    }
-    
-    if (savedPlaylistIndex !== null) {
-        currentPlaylistIndex = parseInt(savedPlaylistIndex);
     }
 
     loadVideo(); // Display the loaded video
@@ -170,19 +153,18 @@ window.onload = async () => {
 
     // Event listeners
     document.getElementById('playlistSelector').addEventListener('change', (event) => {
-        currentPlaylistIndex = parseInt(event.target.value); // Update the current playlist index
-        currentVideoIndex = 0; // Reset video index when changing playlists
+        currentVideoIndex = parseInt(event.target.value);
         loadVideo();
     });
 
     document.getElementById('nextButton').addEventListener('click', function() {
-        currentVideoIndex = (currentVideoIndex + 1) % playlists[currentPlaylistIndex].videos.length; // Loop back to the beginning
+        currentVideoIndex = (currentVideoIndex + 1) % videoData.length; // Loop back to the beginning
         displayRandomPlaylists();
         loadVideo();
     });
 
     document.getElementById('prevButton').addEventListener('click', function() {
-        currentVideoIndex = (currentVideoIndex - 1 + playlists[currentPlaylistIndex].videos.length) % playlists[currentPlaylistIndex].videos.length; // Loop to the end
+        currentVideoIndex = (currentVideoIndex - 1 + videoData.length) % videoData.length; // Loop to the end
         displayRandomPlaylists();
         loadVideo();
     });
@@ -193,6 +175,7 @@ window.onload = async () => {
         document.getElementById('user-form').style.display = 'none'; // Hide the form after submission
     });
 
+    
     // Event listener for theme buttons
     document.querySelectorAll('#theme-switcher button').forEach(button => {
         button.addEventListener('click', (event) => {
