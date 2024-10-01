@@ -101,6 +101,17 @@
     --border-bottom: #4b0082; /* Border color for purple theme */
 }
 
+/* Pink Theme */
+.pink-theme {
+    --primary-bg: #ffb3d9; /* Soft pink background */
+    --secondary-bg: #ffe6f2; /* Light pink for secondary background */
+    --accent-color: #ff69b4; /* Hot pink for accents */
+    --highlight-color: #ff99cc; /* Bright pink for highlights */
+    --content-bg: #ffccf2; /* Pale pink content area */
+    --color: #330033; /* Dark magenta text for readability */
+    --secondary-color: #660066; /* Deep magenta for secondary text */
+}
+
 
 /* Global Styles */
 body {

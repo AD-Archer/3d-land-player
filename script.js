@@ -75,7 +75,7 @@ function loadUserData() {
 
 // Function to change the theme and store the preference
 function changeTheme(theme) {
-    const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple'];
+    const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple', 'pink'];
     document.body.classList.remove(...themes.map(t => `${t}-theme`)); // Remove all theme classes
 
     if (themes.includes(theme)) {
