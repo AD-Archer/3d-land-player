@@ -56,18 +56,29 @@ function loadUserData() {
 // Function to change the theme and store the preference
 function changeTheme(theme) {
     // Remove existing theme classes
-    document.body.classList.remove('dark-theme', 'light-theme');
+    document.body.classList.remove('dark-theme', 'light-theme', 'mint-green-theme', 'icy-theme', 'fire-theme', 'halloween-theme', 'purple-theme');
 
     // Apply the selected theme
     if (theme === 'dark') {
         document.body.classList.add('dark-theme');
     } else if (theme === 'light') {
         document.body.classList.add('light-theme');
+    } else if (theme === 'mint-green') {
+        document.body.classList.add('mint-green-theme');
+    } else if (theme === 'icy') {
+        document.body.classList.add('icy-theme');
+    } else if (theme === 'fire') {
+        document.body.classList.add('fire-theme');
+    } else if (theme === 'halloween') {
+        document.body.classList.add('halloween-theme');
+    } else if (theme === 'purple') {
+        document.body.classList.add('purple-theme');
     }
 
     // Save the theme preference in local storage
     localStorage.setItem('theme', theme);
 }
+
 
 // Function to load the theme from local storage
 function loadTheme() {
@@ -126,14 +137,6 @@ document.getElementById('prevButton').addEventListener('click', function() {
     displayRandomPlaylists();
     loadVideo();
 });
-
-
-
-
-
-
-
-
 
 
 // Initialize the page with the playlist and the first video

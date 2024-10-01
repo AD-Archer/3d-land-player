@@ -31,13 +31,72 @@
 /* Light Theme */
 .light-theme {
     --primary-bg: #ffb458; /* Bright red for the main background */
-    --secondary-bg: #ffb458; /* Orange for sections */
+    --secondary-bg: #ffae4a; /* Orange for sections */
     --accent-color: #ff4d4d; /* Bright red for accents */
     --highlight-color: #ff8c00; /* Orange for highlights */
     --content-bg: #ff8c00; 
     --text-color: black; /* Black text for light theme */
     --border-color: #ff4d4d; /* Border color for sections */
 }
+
+/* Mint Green Theme */
+.mint-green-theme {
+    --primary-bg: #98ff98; /* Soft mint green background */
+    --secondary-bg: #e0ffe0; /* Light mint for secondary background */
+    --accent-color: #00cc99; /* Teal for accents */
+    --highlight-color: #b3ffb3; /* Light mint highlight */
+    --content-bg: #ccffcc; /* Pale green content area */
+    --color: #004d33; /* Dark green text for readability */
+    --secondary-color: #006666; /* Deep teal for secondary text */
+}
+
+
+/* Icy White and Blue Theme */
+.icy-theme {
+    --primary-bg: #e0f7fa; /* Light icy blue */
+    --secondary-bg: #b2ebf2; /* Slightly darker blue */
+    --accent-color: #00bcd4; /* Bright cyan for accents */
+    --highlight-color: #00acc1; /* Teal for highlights */
+    --content-bg: #ffffff; /* White content area */
+    --color: #000080; /* Navy blue text */
+    --secondary-color: #add8e6; /* Light blue secondary text */
+}
+
+/* Fire Theme */
+.fire-theme {
+    --primary-bg: linear-gradient(to bottom, #ff4500, #ff8c00, #ff0000); /* Fire gradient from orange to red */
+    --secondary-bg: #b22222; /* Dark red for sections */
+    --accent-color: #ffa500; /* Bright orange for accents */
+    --highlight-color: #ff4500; /* Fiery orange highlights */
+    --content-bg: #ff6347; /* Tomato red for content */
+    --color: #ffffff; /* White text */
+    --secondary-color: #2c2c2c; /* Charcoal secondary text */
+}
+
+/* Halloween Theme */
+.halloween-theme {
+    --primary-bg: #1c1c1c; /* Dark background */
+    --secondary-bg: #ff7518; /* Pumpkin orange for sections */
+    --accent-color: #8a2be2; /* Dark purple for accents */
+    --highlight-color: #ffcc00; /* Bright yellow highlights */
+    --content-bg: #2e2b5f; /* Spooky dark blue-purple for content */
+    --color: #f8f8ff; /* Ghostly white text */
+    --secondary-color: #ff7518; /* Pumpkin orange secondary text */
+}
+
+/* Purple Theme */
+.purple-theme {
+    --primary-bg: #800080; /* Deep purple for main background */
+    --secondary-bg: #9370db; /* Light purple for sections */
+    --accent-color: #4b0082; /* Indigo for accents */
+    --highlight-color: #ee82ee; /* Soft violet highlights */
+    --content-bg: #dda0dd; /* Pale violet red for content */
+    --color: #ffffff; /* White text */
+    --secondary-color: #e6e6fa; /* Lavender secondary text */
+}
+
+
+
 
 /* Global Styles */
 body {
