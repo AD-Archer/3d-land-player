@@ -1,5 +1,7 @@
 // Track the current video index
 let currentVideoIndex = 0;
+const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple', 'pink'];
+
 
 // Function to populate the playlist selector
 function populatePlaylistSelector() {
@@ -73,9 +75,9 @@ function loadUserData() {
     }
 }
 
+
 // Function to change the theme and store the preference
 function changeTheme(theme) {
-    const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple', 'pink'];
     document.body.classList.remove(...themes.map(t => `${t}-theme`)); // Remove all theme classes
 
     if (themes.includes(theme)) {
@@ -90,7 +92,6 @@ function changeTheme(theme) {
 // Function to load the theme from local storage
 function loadTheme() {
     const theme = localStorage.getItem('theme') || 'default';
-    const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple'];
     document.body.classList.remove(...themes.map(t => `${t}-theme`));
 
     if (themes.includes(theme)) {
