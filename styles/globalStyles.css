@@ -14,6 +14,7 @@
     --larger-font-size: 20px; /* Larger font size */
     --color: white;
     --secondary-color: white;
+    --border-bottom: #e74c3e; /* Default border color */
 }
 
 /* Dark Theme */
@@ -25,7 +26,7 @@
     --content-bg: #444;
     --color: rgb(255, 255, 255);
     --secondary-color: rgb(0, 0, 0);
-
+    --border-bottom: #f39c12; /* Border color for dark theme */
 }
 
 /* Light Theme */
@@ -37,6 +38,7 @@
     --content-bg: #ff8c00; 
     --text-color: black; /* Black text for light theme */
     --border-color: #ff4d4d; /* Border color for sections */
+    --border-bottom: #ff4d4d; /* Border color for light theme */
 }
 
 /* Mint Green Theme */
@@ -48,8 +50,8 @@
     --content-bg: #ccffcc; /* Pale green content area */
     --color: #004d33; /* Dark green text for readability */
     --secondary-color: #006666; /* Deep teal for secondary text */
+    --border-bottom: #00cc99; /* Border color for mint green theme */
 }
-
 
 /* Icy White and Blue Theme */
 .icy-theme {
@@ -60,6 +62,7 @@
     --content-bg: #ffffff; /* White content area */
     --color: #000080; /* Navy blue text */
     --secondary-color: #add8e6; /* Light blue secondary text */
+    --border-bottom: #00bcd4; /* Border color for icy theme */
 }
 
 /* Fire Theme */
@@ -71,6 +74,7 @@
     --content-bg: #ff6347; /* Tomato red for content */
     --color: #ffffff; /* White text */
     --secondary-color: #2c2c2c; /* Charcoal secondary text */
+    --border-bottom: #ffa500; /* Border color for fire theme */
 }
 
 /* Halloween Theme */
@@ -82,6 +86,7 @@
     --content-bg: #2e2b5f; /* Spooky dark blue-purple for content */
     --color: #f8f8ff; /* Ghostly white text */
     --secondary-color: #ff7518; /* Pumpkin orange secondary text */
+    --border-bottom: #ffcc00; /* Border color for Halloween theme */
 }
 
 /* Purple Theme */
@@ -93,9 +98,8 @@
     --content-bg: #dda0dd; /* Pale violet red for content */
     --color: #ffffff; /* White text */
     --secondary-color: #e6e6fa; /* Lavender secondary text */
+    --border-bottom: #4b0082; /* Border color for purple theme */
 }
-
-
 
 
 /* Global Styles */
@@ -128,7 +132,7 @@ body {
     color: var(--secondary-color);
     text-align: center;
     padding: 10px; /* Reduced padding for a smaller header */
-    border-bottom: 5px solid #e67e22; /* Optional solid border color */
+    border-bottom: 5px solid var(--border-bottom); /* Optional solid border color */
 }
 
 .sidebar {
@@ -154,6 +158,7 @@ body {
 }
 
 .playlist-section {
+    grid-area: 2 / 4 / 4 / 5; /* Adjust to occupy the right sidebar */
     background-color: var(--secondary-bg);
     text-align: center;
     padding: 5px; /* Space for titles */
