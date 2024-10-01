@@ -1,3 +1,4 @@
+// Array of YouTube video URLs and information
 const videoData = [
     { 
         "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PLJGjdBsM0cguUT00NXKnQxDOpGzruSm6G", 
@@ -34,6 +35,7 @@ const videoData = [
         "fact": "It is a direct sequel to New Super Mario Bros. for the Nintendo DS.",
         "image": "images/nsmb2.png"
     },
+    
     { 
         "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PLbcFKfjvYToUw4GsGrgOmIf4Yju2-oSiQ", 
         "name": "Super Mario World Playlist",
@@ -92,4 +94,3 @@ const videoData = [
     }
 ];
 
-const yokaiwatch = [];

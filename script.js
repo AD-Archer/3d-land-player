@@ -1,93 +1,86 @@
+// Track the current video index
 let currentVideoIndex = 0;
-let currentPlaylistIndex = 0; // Track the currently selected playlist index
-let playlists = []; // Array to hold multiple playlists
-
-// Function to fetch playlist data from external file
-async function fetchPlaylists() {
-    try {
-        const response = await fetch('playlists.json'); // Adjust path as necessary
-        const data = await response.json();
-        playlists = data.music; // Assuming your playlists are inside 'music'
-        populatePlaylistSelector();
-        loadVideo();
-    } catch (error) {
-        console.error('Error fetching playlists:', error);
-    }
-}
 
 // Function to populate the playlist selector
 function populatePlaylistSelector() {
     const playlistSelector = document.getElementById('playlistSelector');
+    if (!playlistSelector) return; // Ensure playlistSelector exists
     playlistSelector.innerHTML = ''; // Clear existing options
 
-    playlists.forEach((playlist, index) => {
+    videoData.forEach((video, index) => {
         const option = document.createElement('option');
         option.value = index;
-        option.textContent = playlist.name; // Display playlist name
+        option.textContent = video.name;
         playlistSelector.appendChild(option);
-    });
-
-    // Set default to the first playlist
-    playlistSelector.value = currentPlaylistIndex;
-
-    // Add event listener for playlist selection
-    playlistSelector.addEventListener('change', (event) => {
-        currentPlaylistIndex = event.target.value;
-        currentVideoIndex = 0; // Reset to first video in the new playlist
-        loadVideo();
     });
 }
 
-// Function to load video based on currentVideoIndex and currentPlaylistIndex
+// Function to load video based on currentVideoIndex
 function loadVideo() {
-    const video = playlists[currentPlaylistIndex]; // Access selected playlist
+    if (!videoData || videoData.length === 0) return; // Ensure videoData exists and has content
+    const video = videoData[currentVideoIndex];
     const youtubeVideo = document.getElementById('youtubeVideo');
     const videoNameDisplay = document.getElementById('videoName');
     const videoDescriptionDisplay = document.getElementById('videoDescription');
 
-    youtubeVideo.src = video.url;
-    videoNameDisplay.textContent = `Current Playlist: ${video.name}`;
-    videoDescriptionDisplay.innerHTML = `
-        <strong>Description:</strong> ${video.description} <br>
-        <strong>Fun Fact:</strong> ${video.fact}
-    `;
+    if (youtubeVideo && videoNameDisplay && videoDescriptionDisplay) {
+        youtubeVideo.src = video.url;
+        videoNameDisplay.textContent = `Current Video: ${video.name}`;
+        videoDescriptionDisplay.innerHTML = `
+            <strong>Description:</strong> ${video.description} <br>
+            <strong>Fun Fact:</strong> ${video.fact}
+        `;
 
-    // Update button text based on the current video index
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
+        // Update button text based on the current video index
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
 
-    prevButton.textContent = currentVideoIndex > 0 ? `Previous Playlist: ${playlists[currentVideoIndex - 1].name}` : "Previous Playlist";
-    nextButton.textContent = currentVideoIndex < playlists.length - 1 ? `Next Playlist: ${playlists[currentVideoIndex + 1].name}` : "Next Playlist";
+        if (prevButton) {
+            prevButton.textContent = currentVideoIndex > 0 ? `Previous Video: ${videoData[currentVideoIndex - 1].name}` : "Previous Video";
+        }
+        if (nextButton) {
+            nextButton.textContent = currentVideoIndex < videoData.length - 1 ? `Next Video: ${videoData[currentVideoIndex + 1].name}` : "Next Video";
+        }
 
-    // Save the current video index and playlist index to local storage
-    localStorage.setItem('currentVideoIndex', currentVideoIndex);
-    localStorage.setItem('currentPlaylistIndex', currentPlaylistIndex);
+        // Save the current video index to local storage
+        localStorage.setItem('currentVideoIndex', currentVideoIndex);
+    }
 }
 
-// Function to save email and theme to local storage
+// Function to save user email and username to local storage
 function saveUserData() {
-    const email = document.getElementById('email').value;
-    localStorage.setItem('userEmail', email);
+    const email = document.getElementById('email')?.value;
+    const username = document.getElementById('username')?.value;
+    if (email) localStorage.setItem('userEmail', email);
+    if (username) localStorage.setItem('username', username);
 }
 
 // Function to load user data from local storage
 function loadUserData() {
     const email = localStorage.getItem('userEmail');
+    const username = localStorage.getItem('username');
     if (email) {
-        document.getElementById('email').value = email;
+        const emailField = document.getElementById('email');
+        if (emailField) {
+            emailField.value = email;
+        }
+    }
+    if (username) {
+        const usernameField = document.getElementById('username');
+        if (usernameField) {
+            usernameField.value = username;
+        }
     }
 }
 
 // Function to change the theme and store the preference
 function changeTheme(theme) {
-    // Remove existing theme classes
-    document.body.classList.remove('dark-theme', 'light-theme');
+    const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple'];
+    document.body.classList.remove(...themes.map(t => `${t}-theme`)); // Remove all theme classes
 
-    // Apply the selected theme
-    if (theme === 'dark') {
-        document.body.classList.add('dark-theme');
-    } else if (theme === 'light') {
-        document.body.classList.add('light-theme');
+    if (themes.includes(theme)) {
+        document.body.classList.add(`${theme}-theme`); // Add the selected theme class
+        console.log(`Theme changed to ${theme.charAt(0).toUpperCase() + theme.slice(1)}!`);
     }
 
     // Save the theme preference in local storage
@@ -96,31 +89,36 @@ function changeTheme(theme) {
 
 // Function to load the theme from local storage
 function loadTheme() {
-    const theme = localStorage.getItem('theme');
-    if (theme) {
-        changeTheme(theme); // Apply the saved theme
+    const theme = localStorage.getItem('theme') || 'default';
+    const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple'];
+    document.body.classList.remove(...themes.map(t => `${t}-theme`));
+
+    if (themes.includes(theme)) {
+        document.body.classList.add(`${theme}-theme`);
+        console.log(`Theme changed to ${theme.charAt(0).toUpperCase() + theme.slice(1)}!`);
     }
 }
 
-// Function to get 4 random playlists
+// Function to get a specified number of random playlists
 function getRandomPlaylists(numPlaylists) {
-    const shuffled = [...playlists].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, numPlaylists);
+    // Return an empty array if videoData is not defined or has no content
+    if (!videoData || videoData.length === 0) return [];
+    
+    // Shuffle the videoData array and return the first numPlaylists items
+    const shuffledPlaylists = videoData.sort(() => 0.5 - Math.random());
+    return shuffledPlaylists.slice(0, numPlaylists); // Return only the specified number of playlists
 }
 
-// Function to display random playlists
+// Function to display random playlists in the UI
 function displayRandomPlaylists() {
     const playlistsContainer = document.getElementById('randomPlaylists');
-    if (!playlistsContainer) {
-        console.error('Element with ID "randomPlaylists" not found.');
-        return;
-    }
+    if (!playlistsContainer) return; // Ensure the container exists
 
-    playlistsContainer.innerHTML = ''; // Clear existing playlists
+    playlistsContainer.innerHTML = ''; // Clear any existing playlists
 
-    const randomPlaylists = getRandomPlaylists(4);
-
-    randomPlaylists.forEach((playlist) => {
+    const randomPlaylists = getRandomPlaylists(4); // Get 4 random playlists
+    randomPlaylists.forEach((playlist, index) => {
+        // Create a new element for each playlist
         const playlistItem = document.createElement('div');
         playlistItem.className = 'playlist-item';
         playlistItem.innerHTML = `
@@ -128,39 +126,41 @@ function displayRandomPlaylists() {
             <p>${playlist.description}</p>
             <button class="view-playlist-button" data-url="${playlist.url}">View Playlist</button>
         `;
-        playlistsContainer.appendChild(playlistItem);
-    });
+        playlistsContainer.appendChild(playlistItem); // Add the new playlist item to the container
 
-    // Add event listener to all "View Playlist" buttons
-    document.querySelectorAll('.view-playlist-button').forEach(button => {
+        // Add event listener to the "View Playlist" button for updating video index
+        const button = playlistItem.querySelector('.view-playlist-button');
         button.addEventListener('click', (event) => {
             const playlistUrl = event.target.getAttribute('data-url');
-            document.getElementById('youtubeVideo').src = playlistUrl;
+            const youtubeVideo = document.getElementById('youtubeVideo');
+            if (youtubeVideo) {
+                youtubeVideo.src = playlistUrl; // Update the video source to the selected playlist URL
+                currentVideoIndex = index; // Update the current video index to the selected playlist index
+            }
         });
     });
 }
 
-// Initialize the page with the fetched data
-window.onload = function () {
-    fetchPlaylists();
-    loadUserData();
-    loadTheme();
-};
+
+// Event listener for next and previous buttons
+document.getElementById('nextButton')?.addEventListener('click', function() {
+    currentVideoIndex = (currentVideoIndex + 1) % videoData.length; // Loop back to the beginning
+    loadVideo();
+});
+
+document.getElementById('prevButton')?.addEventListener('click', function() {
+    currentVideoIndex = (currentVideoIndex - 1 + videoData.length) % videoData.length; // Loop to the end
+    loadVideo();
+});
 
 // Initialize the page with the playlist and the first video
-window.onload = async () => {
-    await fetchPlaylists(); // Fetch playlists when the page loads
+window.onload = () => {
+    populatePlaylistSelector();
 
-    // Load the last watched video index and playlist index from local storage
+    // Load the last watched video index from local storage
     const savedVideoIndex = localStorage.getItem('currentVideoIndex');
-    const savedPlaylistIndex = localStorage.getItem('currentPlaylistIndex');
-
     if (savedVideoIndex !== null) {
-        currentVideoIndex = parseInt(savedVideoIndex);
-    }
-    
-    if (savedPlaylistIndex !== null) {
-        currentPlaylistIndex = parseInt(savedPlaylistIndex);
+        currentVideoIndex = parseInt(savedVideoIndex, 10);
     }
 
     loadVideo(); // Display the loaded video
@@ -168,61 +168,51 @@ window.onload = async () => {
     loadUserData(); // Load user data
     loadTheme(); // Load theme
 
-    // Event listeners
-    document.getElementById('playlistSelector').addEventListener('change', (event) => {
-        currentPlaylistIndex = parseInt(event.target.value); // Update the current playlist index
-        currentVideoIndex = 0; // Reset video index when changing playlists
-        loadVideo();
-    });
-
-    document.getElementById('nextButton').addEventListener('click', function() {
-        currentVideoIndex = (currentVideoIndex + 1) % playlists[currentPlaylistIndex].videos.length; // Loop back to the beginning
-        displayRandomPlaylists();
-        loadVideo();
-    });
-
-    document.getElementById('prevButton').addEventListener('click', function() {
-        currentVideoIndex = (currentVideoIndex - 1 + playlists[currentPlaylistIndex].videos.length) % playlists[currentPlaylistIndex].videos.length; // Loop to the end
-        displayRandomPlaylists();
-        loadVideo();
-    });
-
     // Event listener for user form submission
-    document.getElementById('submit').addEventListener('click', function() {
-        saveUserData();
-        document.getElementById('user-form').style.display = 'none'; // Hide the form after submission
-    });
+    const profileForm = document.getElementById('profileForm');
+    if (profileForm) {
+        profileForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            saveUserData(); // Save user data
+            alert('Profile updated successfully!');
+        });
+    }
 
     // Event listener for theme buttons
-    document.querySelectorAll('#theme-switcher button').forEach(button => {
+    document.querySelectorAll('.theme-button').forEach(button => {
         button.addEventListener('click', (event) => {
-            changeTheme(event.target.textContent.toLowerCase());
+            const selectedTheme = event.target.textContent;
+            changeTheme(selectedTheme);
         });
     });
 };
 
-// Show feedback form when the feedback button is clicked
-document.getElementById('feedbackButton').addEventListener('click', function() {
+
+
+// Toggle feedback form display
+function toggleFeedbackForm() {
     const feedbackFormSection = document.getElementById('feedbackFormSection');
-    feedbackFormSection.style.display = feedbackFormSection.style.display === 'none' ? 'block' : 'none';
-});
-  
-// Function to handle feedback form submission
-document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
-  
-    const feedbackText = document.getElementById('feedback').value;
-    const feedbackName = document.getElementById('feedbackName').value;
-    const feedbackEmail = document.getElementById('feedbackEmail').value;
-  
-    // You can handle feedback submission logic here (e.g., send to server or store locally)
-    
-    // Display a response message
-    document.getElementById('feedbackResponse').textContent = `Thank you for your feedback, ${feedbackName || 'Guest'}!`;
-  
-    // Optionally, save feedback to local storage (you can modify this as needed)
-    localStorage.setItem('userFeedback', JSON.stringify({ feedbackText, feedbackName, feedbackEmail }));
-  
-    // Clear the form inputs
-    document.getElementById('feedbackForm').reset();
-});
+    if (feedbackFormSection) {
+        feedbackFormSection.style.display = feedbackFormSection.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+// Event listener for feedback form submission
+const feedbackForm = document.getElementById('feedbackForm');
+if (feedbackForm) {
+    feedbackForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('feedbackName').value;
+        const email = document.getElementById('feedbackEmail').value;
+        const feedback = document.getElementById('feedback').value;
+
+        // Display feedback submission response
+        const feedbackResponse = document.getElementById('feedbackResponse');
+        if (feedbackResponse) {
+            feedbackResponse.textContent = `Thank you, ${name}, for your feedback!`;
+        }
+
+        // Optionally, clear the form fields
+        feedbackForm.reset();
+    });
+}

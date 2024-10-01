@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player Settings</title>
+    <link rel="stylesheet" href="styles/globalStyles.css"> <!-- Link to global CSS file -->
+    <link rel="stylesheet" href="styles/settingsStyles.css"> <!-- Link to css file-->
+</head>
+<body class="default-theme">
+    <div class="grid-container">
+        <header class="header">
+            <h1>Settings</h1> 
+            <nav>
+                <div>
+                    <button onclick="location.href='index.html';">Home</button>
+                    <button onclick="location.href='settings.html';">Settings/Profile</button>
+                </div>
+            </nav>
+        </header>
+        <aside class="sidebar">
+            <div id="theme-switcher">
+                <h2>Theme Selection</h2>
+                <button onclick="changeTheme('default')">Default</button>
+                <button onclick="changeTheme('dark')">Dark</button>
+                <button onclick="changeTheme('mint-green')">Mint Green</button>
+                <button onclick="changeTheme('light')">Starman</button>
+                <button onclick="changeTheme('icy')">Icy</button>
+                <button onclick="changeTheme('fire')">Fire</button>
+                <button onclick="changeTheme('halloween')">Halloween</button>
+                <button onclick="changeTheme('purple')">Purple</button>
+            </div>
+            <button id="save-settings">Save Settings</button>
+        </aside>
+        <div class="profile-section">
+            <h2>User Profile</h2>
+            <div class="profile-field">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username">
+            </div>
+            <div class="profile-field">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <button id="update-profile">Update Profile</button>
+        </div>
+        <footer class="footer">
+            <p>© 2024 Your Site Name</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+    //To ensure that theme loads properly
+    window.onload = loadTheme;
+    </script>
+  
+</body>
+</html>
