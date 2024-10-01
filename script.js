@@ -47,30 +47,40 @@ function loadVideo() {
     }
 }
 
-// Function to save user email to local storage
+// Function to save user email and username to local storage
 function saveUserData() {
     const email = document.getElementById('email')?.value;
+    const username = document.getElementById('username')?.value;
     if (email) localStorage.setItem('userEmail', email);
+    if (username) localStorage.setItem('username', username);
 }
 
-// Function to load user email from local storage
+// Function to load user data from local storage
 function loadUserData() {
     const email = localStorage.getItem('userEmail');
+    const username = localStorage.getItem('username');
     if (email) {
         const emailField = document.getElementById('email');
         if (emailField) {
             emailField.value = email;
         }
     }
+    if (username) {
+        const usernameField = document.getElementById('username');
+        if (usernameField) {
+            usernameField.value = username;
+        }
+    }
 }
 
 // Function to change the theme and store the preference
 function changeTheme(theme) {
-    const themes = ['dark-theme', 'light-theme', 'mint-green-theme', 'icy-theme', 'fire-theme', 'halloween-theme', 'purple-theme'];
-    document.body.classList.remove(...themes); // Remove all theme classes
+    const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple'];
+    document.body.classList.remove(...themes.map(t => `${t}-theme`)); // Remove all theme classes
 
-    if (themes.includes(`${theme}-theme`)) {
+    if (themes.includes(theme)) {
         document.body.classList.add(`${theme}-theme`); // Add the selected theme class
+        console.log(`Theme changed to ${theme.charAt(0).toUpperCase() + theme.slice(1)}!`);
     }
 
     // Save the theme preference in local storage
@@ -79,24 +89,36 @@ function changeTheme(theme) {
 
 // Function to load the theme from local storage
 function loadTheme() {
-    const theme = localStorage.getItem('theme') || 'default'; // Default theme if none found
-    changeTheme(theme); // Apply the saved theme
+    const theme = localStorage.getItem('theme') || 'default';
+    const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple'];
+    document.body.classList.remove(...themes.map(t => `${t}-theme`));
+
+    if (themes.includes(theme)) {
+        document.body.classList.add(`${theme}-theme`);
+        console.log(`Theme changed to ${theme.charAt(0).toUpperCase() + theme.slice(1)}!`);
+    }
 }
 
-// Function to get random playlists
+// Function to get a specified number of random playlists
 function getRandomPlaylists(numPlaylists) {
-    return videoData.length ? [...videoData].sort(() => 0.5 - Math.random()).slice(0, numPlaylists) : [];
+    // Return an empty array if videoData is not defined or has no content
+    if (!videoData || videoData.length === 0) return [];
+    
+    // Shuffle the videoData array and return the first numPlaylists items
+    const shuffledPlaylists = videoData.sort(() => 0.5 - Math.random());
+    return shuffledPlaylists.slice(0, numPlaylists); // Return only the specified number of playlists
 }
 
-// Function to display random playlists
+// Function to display random playlists in the UI
 function displayRandomPlaylists() {
     const playlistsContainer = document.getElementById('randomPlaylists');
-    if (!playlistsContainer) return;
+    if (!playlistsContainer) return; // Ensure the container exists
 
-    playlistsContainer.innerHTML = ''; // Clear existing playlists
+    playlistsContainer.innerHTML = ''; // Clear any existing playlists
 
-    const randomPlaylists = getRandomPlaylists(4);
-    randomPlaylists.forEach((playlist) => {
+    const randomPlaylists = getRandomPlaylists(4); // Get 4 random playlists
+    randomPlaylists.forEach((playlist, index) => {
+        // Create a new element for each playlist
         const playlistItem = document.createElement('div');
         playlistItem.className = 'playlist-item';
         playlistItem.innerHTML = `
@@ -104,17 +126,21 @@ function displayRandomPlaylists() {
             <p>${playlist.description}</p>
             <button class="view-playlist-button" data-url="${playlist.url}">View Playlist</button>
         `;
-        playlistsContainer.appendChild(playlistItem);
-    });
+        playlistsContainer.appendChild(playlistItem); // Add the new playlist item to the container
 
-    document.querySelectorAll('.view-playlist-button').forEach(button => {
+        // Add event listener to the "View Playlist" button for updating video index
+        const button = playlistItem.querySelector('.view-playlist-button');
         button.addEventListener('click', (event) => {
             const playlistUrl = event.target.getAttribute('data-url');
             const youtubeVideo = document.getElementById('youtubeVideo');
-            if (youtubeVideo) youtubeVideo.src = playlistUrl;
+            if (youtubeVideo) {
+                youtubeVideo.src = playlistUrl; // Update the video source to the selected playlist URL
+                currentVideoIndex = index; // Update the current video index to the selected playlist index
+            }
         });
     });
 }
+
 
 // Event listener for next and previous buttons
 document.getElementById('nextButton')?.addEventListener('click', function() {
@@ -143,45 +169,50 @@ window.onload = () => {
     loadTheme(); // Load theme
 
     // Event listener for user form submission
-    const submitButton = document.getElementById('submit');
-    if (submitButton) {
-        submitButton.addEventListener('click', function() {
-            saveUserData();
-            document.getElementById('user-form').style.display = 'none'; // Hide the form after submission
+    const profileForm = document.getElementById('profileForm');
+    if (profileForm) {
+        profileForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            saveUserData(); // Save user data
+            alert('Profile updated successfully!');
         });
     }
 
     // Event listener for theme buttons
-    const themeButtons = document.querySelectorAll('#theme-switcher button');
-    themeButtons.forEach(button => {
+    document.querySelectorAll('.theme-button').forEach(button => {
         button.addEventListener('click', (event) => {
-            changeTheme(event.target.textContent.toLowerCase());
+            const selectedTheme = event.target.textContent;
+            changeTheme(selectedTheme);
         });
     });
 };
 
-// Feedback form submission handling
+
+
+// Toggle feedback form display
+function toggleFeedbackForm() {
+    const feedbackFormSection = document.getElementById('feedbackFormSection');
+    if (feedbackFormSection) {
+        feedbackFormSection.style.display = feedbackFormSection.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+// Event listener for feedback form submission
 const feedbackForm = document.getElementById('feedbackForm');
 if (feedbackForm) {
     feedbackForm.addEventListener('submit', function(event) {
         event.preventDefault();
+        const name = document.getElementById('feedbackName').value;
+        const email = document.getElementById('feedbackEmail').value;
+        const feedback = document.getElementById('feedback').value;
 
-        const feedbackText = document.getElementById('feedback').value;
-        const feedbackName = document.getElementById('feedbackName').value;
-        const feedbackEmail = document.getElementById('feedbackEmail').value;
+        // Display feedback submission response
+        const feedbackResponse = document.getElementById('feedbackResponse');
+        if (feedbackResponse) {
+            feedbackResponse.textContent = `Thank you, ${name}, for your feedback!`;
+        }
 
-        // Save feedback to local storage
-        localStorage.setItem('userFeedback', JSON.stringify({ feedbackText, feedbackName, feedbackEmail }));
-
-        // Display feedback response
-        document.getElementById('feedbackResponse').textContent = `Thank you for your feedback, ${feedbackName || 'Guest'}!`;
-
-        // Reset the feedback form
+        // Optionally, clear the form fields
         feedbackForm.reset();
     });
-}
-
-function toggleFeedbackForm() {
-    const feedbackFormSection = document.getElementById('feedbackFormSection');
-    feedbackFormSection.style.display = feedbackFormSection.style.display === 'none' ? 'block' : 'none';
 }

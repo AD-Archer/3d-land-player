@@ -35,13 +35,7 @@ const videoData = [
         "fact": "It is a direct sequel to New Super Mario Bros. for the Nintendo DS.",
         "image": "images/nsmb2.png"
     },
-    { 
-        "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PLhLQajHvNrYQ2dB4FE6qxRdrmTtmHc2Na", 
-        "name": "Super Mario Galaxy Playlist",
-        "description": "Released in 2007. Known for its gravity-defying levels and innovative gameplay.",
-        "fact": "It won numerous awards for its design and originality.",
-        "image": "images/SuperMarioGalaxy.jpg"
-    },
+    
     { 
         "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PLbcFKfjvYToUw4GsGrgOmIf4Yju2-oSiQ", 
         "name": "Super Mario World Playlist",
@@ -99,3 +93,4 @@ const videoData = [
         "image": "images/3dsbox.png"
     }
 ];
+

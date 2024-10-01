@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Adjust the path as necessary -->
+    <title>Video Player Settings</title>
+    <link rel="stylesheet" href="styles/globalStyles.css"> <!-- Link to global CSS file -->
+    <link rel="stylesheet" href="styles/settingsStyles.css"> <!-- Link to css file-->
 </head>
 <body class="default-theme">
     <div class="grid-container">
@@ -48,5 +49,11 @@
         </footer>
     </div>
     <script src="script.js"></script>
+
+    <script>
+    //To ensure that theme loads properly
+    window.onload = loadTheme;
+    </script>
+  
 </body>
 </html>
