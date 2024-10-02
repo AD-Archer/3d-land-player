@@ -112,6 +112,55 @@
     --secondary-color: #660066; /* Deep magenta for secondary text */
 }
 
+/* Gray Theme */
+.gray-theme {
+    --primary-bg: #7f8c8d; /* Neutral gray for main background */
+    --secondary-bg: #bdc3c7; /* Light gray for sections */
+    --accent-color: #34495e; /* Dark blue-gray for accents */
+    --highlight-color: #95a5a6; /* Light gray highlights */
+    --content-bg: #ecf0f1; /* Almost white for content area */
+    --color: #2c3e50; /* Dark slate blue text */
+    --secondary-color: #7f8c8d; /* Medium gray for secondary text */
+    --border-bottom: #34495e; /* Border color for gray theme */
+}
+
+/* Propeller Orange Theme */
+.propeller-orange-theme {
+    --primary-bg: #ff9800; /* Vibrant orange for main background */
+    --secondary-bg: #ffb74d; /* Light orange for sections */
+    --accent-color: #ff5722; /* Bright orange-red for accents */
+    --highlight-color: #ffc107; /* Bright yellow-orange highlights */
+    --content-bg: #ffcc80; /* Pale orange content area */
+    --color: #ffffff; /* White text for readability */
+    --secondary-color: #3e2723; /* Dark brown for secondary text */
+    --border-bottom: #ff5722; /* Border color for propeller orange theme */
+}
+
+/* Bee Theme */
+.bee-theme {
+    --primary-bg: #f9e79f; /* Light yellow for main background */
+    --secondary-bg: #f1c40f; /* Bright yellow for sections */
+    --accent-color: #e67e22; /* Honey orange for accents */
+    --highlight-color: #f39c12; /* Bright orange highlights */
+    --content-bg: #fff9c4; /* Very pale yellow content area */
+    --color: #000000; /* Black text for readability */
+    --secondary-color: #7f8c8d; /* Gray for secondary text */
+    --border-bottom: #e67e22; /* Border color for bee theme */
+}
+
+/* Sunset Theme */
+.sunset-theme {
+    --primary-bg: #ff5733; /* Deep red-orange for main background */
+    --secondary-bg: #ffc300; /* Bright yellow for sections */
+    --accent-color: #c70039; /* Vibrant pinkish-red for accents */
+    --highlight-color: #900c3f; /* Dark pink highlights */
+    --content-bg: #ffccbc; /* Pale pink-orange content area */
+    --color: #ffffff; /* White text for readability */
+    --secondary-color: #212121; /* Dark gray for secondary text */
+    --border-bottom: #ff5733; /* Border color for sunset theme */
+}
+
+
 
 /* Global Styles */
 body {

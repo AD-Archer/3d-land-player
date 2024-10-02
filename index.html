@@ -34,16 +34,25 @@
             <label for="playlistSelector">Choose a Playlist:</label>
             <select id="playlistSelector"></select>
             <div id="theme-switcher">
-                <h2>Theme Selection</h2>
-                <button onclick="changeTheme('default')">Default</button>
-                <button onclick="changeTheme('dark')">Dark</button>
-                <button onclick="changeTheme('mint-green')">Mint Green</button>
-                <button onclick="changeTheme('light')">Starman</button>
-                <button onclick="changeTheme('icy')">Icy</button>
-                <button onclick="changeTheme('fire')">Fire</button>
-                <button onclick="changeTheme('halloween')">Halloween</button>
-                <button onclick="changeTheme('purple')">Purple</button>
-                <button onclick="changeTheme('pink')">Pink</button>
+                <form id="themeForm">
+                    <label>
+                        <input type="radio" name="theme" value="default" onclick="changeTheme('default')">
+                        Default
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="dark" onclick="changeTheme('dark')">
+                        Dark
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="light" onclick="changeTheme('light')">
+                        Starman
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="purple" onclick="changeTheme('purple')">
+                        Purple
+                    </label>
+                </form>
+                
             </div>
             
             <br>

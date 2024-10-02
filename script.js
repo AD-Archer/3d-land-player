@@ -1,6 +1,20 @@
 // Track the current video index
 let currentVideoIndex = 0;
-const themes = ['dark', 'light', 'mint-green', 'icy', 'fire', 'halloween', 'purple', 'pink'];
+const themes = [
+    'default',        // Default theme
+    'dark',           // Dark theme
+    'light',          // Starman theme
+    'mint-green',     // Mint Green theme
+    'icy',            // Icy theme
+    'fire',           // Fire theme
+    'halloween',      // Halloween theme
+    'purple',         // Purple theme
+    'pink',           // Pink theme
+    'propeller-orange', // Propeller Orange theme
+    'gray',           // Gray theme
+    'bee',            // Bee Colors theme
+    'sunset'          // Sunset theme
+];
 
 
 // Function to populate the playlist selector
