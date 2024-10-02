@@ -22,16 +22,46 @@
         <aside class="sidebar">
             <div id="theme-switcher">
                 <h2>Theme Selection</h2>
-                <button onclick="changeTheme('default')">Default</button>
-                <button onclick="changeTheme('dark')">Dark</button>
-                <button onclick="changeTheme('mint-green')">Mint Green</button>
-                <button onclick="changeTheme('light')">Starman</button>
-                <button onclick="changeTheme('icy')">Icy</button>
-                <button onclick="changeTheme('fire')">Fire</button>
-                <button onclick="changeTheme('halloween')">Halloween</button>
-                <button onclick="changeTheme('purple')">Purple</button>
-                <button onclick="changeTheme('pink')">Pink</button>
+                <form id="themeForm">
+                    <label>
+                        <input type="radio" name="theme" value="default" onclick="changeTheme('default')">
+                        Default
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="dark" onclick="changeTheme('dark')">
+                        Dark
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="mint-green" onclick="changeTheme('mint-green')">
+                        Mint Green
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="light" onclick="changeTheme('light')">
+                        Starman
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="icy" onclick="changeTheme('icy')">
+                        Icy
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="fire" onclick="changeTheme('fire')">
+                        Fire
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="halloween" onclick="changeTheme('halloween')">
+                        Halloween
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="purple" onclick="changeTheme('purple')">
+                        Purple
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="pink" onclick="changeTheme('pink')">
+                        Pink
+                    </label>
+                </form>
             </div>
+            
             <button id="save-settings">Save Settings</button>
         </aside>
 
