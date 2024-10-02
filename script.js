@@ -49,10 +49,19 @@ function loadVideo() {
     }
 }
 
+// Toggle feedback form display
+function toggleFeedbackForm() {
+    const feedbackFormSection = document.getElementById('feedbackFormSection');
+    if (feedbackFormSection) {
+        feedbackFormSection.style.display = feedbackFormSection.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
 // Function to save user email and username to local storage
 function saveUserData() {
-    const email = document.getElementById('email')?.value;
-    const username = document.getElementById('username')?.value;
+    const email = document.getElementById('email')?.value || document.getElementById('feedbackEmail')?.value;
+    const username = document.getElementById('username')?.value || document.getElementById('feedbackName')?.value;
+
     if (email) localStorage.setItem('userEmail', email);
     if (username) localStorage.setItem('username', username);
 }
@@ -61,18 +70,52 @@ function saveUserData() {
 function loadUserData() {
     const email = localStorage.getItem('userEmail');
     const username = localStorage.getItem('username');
+
     if (email) {
         const emailField = document.getElementById('email');
         if (emailField) {
             emailField.value = email;
         }
+        const feedbackEmailField = document.getElementById('feedbackEmail');
+        if (feedbackEmailField) {
+            feedbackEmailField.value = email;
+        }
     }
+
     if (username) {
         const usernameField = document.getElementById('username');
         if (usernameField) {
             usernameField.value = username;
         }
+        const feedbackNameField = document.getElementById('feedbackName');
+        if (feedbackNameField) {
+            feedbackNameField.value = username;
+        }
     }
+}
+
+// Event listener for feedback form submission
+const feedbackForm = document.getElementById('feedbackForm');
+if (feedbackForm) {
+    feedbackForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('feedbackName').value;
+        const email = document.getElementById('feedbackEmail').value;
+        const feedback = document.getElementById('feedback').value;
+
+        // Save user data when form is submitted
+        saveUserData();
+
+        // Display feedback submission response
+        const feedbackResponse = document.getElementById('feedbackResponse');
+        if (feedbackResponse) {
+            feedbackResponse.textContent = `Thank you, ${name}, for your feedback!`;
+        }
+
+        // Optionally, clear the form fields
+        feedbackForm.reset();
+    });
 }
 
 
@@ -188,32 +231,8 @@ window.onload = () => {
     });
 };
 
+document.getElementById('update-profile').addEventListener('click', function() {
+    saveUserData(); // Save data to local storage
+    alert('Profile updated successfully.');
+});
 
-
-// Toggle feedback form display
-function toggleFeedbackForm() {
-    const feedbackFormSection = document.getElementById('feedbackFormSection');
-    if (feedbackFormSection) {
-        feedbackFormSection.style.display = feedbackFormSection.style.display === 'none' ? 'block' : 'none';
-    }
-}
-
-// Event listener for feedback form submission
-const feedbackForm = document.getElementById('feedbackForm');
-if (feedbackForm) {
-    feedbackForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const name = document.getElementById('feedbackName').value;
-        const email = document.getElementById('feedbackEmail').value;
-        const feedback = document.getElementById('feedback').value;
-
-        // Display feedback submission response
-        const feedbackResponse = document.getElementById('feedbackResponse');
-        if (feedbackResponse) {
-            feedbackResponse.textContent = `Thank you, ${name}, for your feedback!`;
-        }
-
-        // Optionally, clear the form fields
-        feedbackForm.reset();
-    });
-}
