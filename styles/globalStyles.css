@@ -233,6 +233,7 @@ button {
     flex: 1; /* Allow buttons to grow equally */
     margin: 0 5px; /* Space between buttons */
     min-width: 80px; /* Minimum width for consistent sizing */
+    border-radius: 2px;
 }
 
 /* Media buttons */
