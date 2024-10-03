@@ -319,11 +319,32 @@ button {
     text-align: center;
 }
 
-#theme-switcher button {
-    width: 80px; /* Adjust the width as needed */
-    height: 30px; /* Adjust the height as needed */
-    padding: 5px 10px; /* Control the space inside the button */
-    font-size: 12px; /* Make the text smaller */
-    border-radius: 5px; /* Optional: Makes the buttons slightly rounded */
-    margin: 5px; /* Optional: Add space between buttons */
+/* Styles for the theme form */
+#themeForm {
+    display: flex;                  /* Use flexbox layout */
+    flex-direction: column;        /* Stack items vertically */
+    align-items: flex-start;       /* Align items to the start for better alignment */
+    justify-content: center;       /* Center items vertically */
+    margin: 20px auto;             /* Center the form on the page with some margin */
+    width: 300px;                  /* Set a width for the form */
+    padding: 20px;                 /* Add padding */
+    border: 1px solid var(--border-bottom); /* Use border color variable */
+    border-radius: 10px;           /* Rounded corners for consistency */
+    background-color: var(--secondary-bg); /* Match background color with your site */
+}
+
+label {
+    margin: 10px 0;                /* Space between labels */
+    display: flex;                 /* Use flexbox for label alignment */
+    align-items: center;           /* Center radio buttons with text */
+}
+
+input[type="radio"] {
+    margin-right: 10px;            /* Space between radio button and label text */
+}
+
+p {
+    margin-top: 20px;              /* Space above the paragraph */
+    text-align: center;            /* Center the text */
+    color: var(--color);           /* Use the color variable for consistency */
 }
