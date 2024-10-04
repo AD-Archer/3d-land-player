@@ -183,6 +183,7 @@ body {
     gap: 0; /* Set gap to 0 for touching elements */
     width: 100vw;
     height: 100vh;
+    
 }
 
 /* Grid Areas */
