@@ -142,17 +142,40 @@ function loadUserData() {
     }
 }
 
+let feedbacklist = []; // Initialize feedback list
+
+// Function to display feedback in the recent feedback section
+function displayFeedback() {
+    const feedbackContainer = document.querySelector('.recent-feedback ul');
+    feedbackContainer.innerHTML = ''; // Clear previous feedback display
+
+    feedbacklist.forEach(feedback => {
+        const listItem = document.createElement('li');
+        listItem.textContent = feedback;
+        feedbackContainer.appendChild(listItem);
+    });
+}
+
 // Event listener for feedback form submission
 document.getElementById('feedbackForm')?.addEventListener('submit', function(event) {
     event.preventDefault();
     const name = document.getElementById('feedbackName').value;
+    const feedbackMessage = document.getElementById('feedback').value; // Get the feedback text
     const feedbackResponse = document.getElementById('feedbackResponse');
+    
     saveUserData();
+
+    // Create feedback string and add it to the list
+    const feedbackEntry = `${name}: ${feedbackMessage}`;
+    feedbacklist.push(feedbackEntry); // Add the new feedback to the feedback list
+    displayFeedback(); // Update the displayed feedback
+
     if (feedbackResponse) {
         feedbackResponse.textContent = `Thank you, ${name}, for your feedback!`;
     }
-    event.target.reset();
+    event.target.reset(); // Reset the form
 });
+
 
 // ======================= Random Playlists =======================
 
@@ -208,3 +231,4 @@ function initializePage() {
 
 // Initialize everything when the page loads
 window.onload = initializePage;
+
