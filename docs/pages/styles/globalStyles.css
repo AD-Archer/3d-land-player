@@ -72,7 +72,7 @@
     --accent-color: #ffa500; /* Bright orange for accents */
     --highlight-color: #ff4500; /* Fiery orange highlights */
     --content-bg: #ff6347; /* Tomato red for content */
-    --color: #ffffff; /* White text */
+    --color: #000000; /* White text */
     --secondary-color: #2c2c2c; /* Charcoal secondary text */
     --border-bottom: #ffa500; /* Border color for fire theme */
 }
@@ -202,7 +202,7 @@ body {
     padding: 10px; /* Reduced padding */
 }
 
-.playlist-viewer {
+.playlist-viewer, .info-section {
     grid-area: 2 / 2 / 3 / 4; 
     background-color: var(--content-bg);
     padding: 10px; /* Adjusted padding */
@@ -212,13 +212,15 @@ body {
     gap: 10px; /* Space between video and title/description */
     color: var(--text-color);
 }
+
+
 .videoDescription, .videoName{
     background-color: var(--secondary-bg);
     padding: 20px;
     border-radius: 20px;
 }
 
-.playlist-section {
+.playlist-section, .recent-feedback {
     grid-area: 2 / 4 / 4 / 5; /* Adjust to occupy the right sidebar */
     background-color: var(--secondary-bg);
     text-align: center;

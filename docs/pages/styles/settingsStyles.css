@@ -1,3 +1,7 @@
+@import url('globalStyles.css');
+
+
+
 /* General styles */
 * {
     margin: 0;
@@ -23,15 +27,6 @@ body, html {
 }
 
 /* Header, Sidebar, and Profile Sections */
-.header {
-    grid-area: header;
-    padding: 1rem;
-}
-
-.sidebar {
-    grid-area: sidebar;
-    padding: 1rem;
-}
 
 .profile-section {
     grid-area: profile-section;

@@ -1,0 +1,227 @@
+/* feedback.css */
+  
+
+/* Import your themes file */
+
+@import url('globalStyles.css');
+
+
+
+/* Styling for the sidebar */
+
+.sidebar {
+
+    padding: 20px;
+
+    background-color: var(--secondary-bg); /* Use the theme variable */
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+/* Feedback form styling */
+
+.feedback-form-section {
+
+    margin-top: 20px;
+
+    background-color: var(--secondary-bg); /* Use the theme variable */
+
+    padding: 20px; /* Add padding for a better look */
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+
+
+.feedback-form-section h2 {
+
+    color: var(--color); /* Use the theme variable */
+
+}
+
+
+
+.feedback-form-section label {
+
+    display: block;
+
+    margin: 10px 0 5px;
+
+}
+
+
+
+.feedback-form-section input,
+
+.feedback-form-section textarea {
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+}
+
+
+
+/* Adjust button styles to use theme variables */
+
+.feedback-form-section button {
+
+    background-color: var(--accent-color); /* Use the theme variable */
+
+    color: var(--color); /* Use the theme variable */
+
+    padding: 10px 15px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+
+}
+
+
+
+.feedback-form-section button:hover {
+
+    background-color: var(--highlight-color); /* Use the theme variable */
+
+}
+
+
+
+/* Info section styling */
+
+.info-section {
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border: 1px solid var(--border-bottom); /* Use the theme variable */
+
+    border-radius: 10px;
+
+    background-color: var(--content-bg); /* Use the theme variable */
+
+}
+
+
+
+.info-section h2 {
+
+    color: var(--accent-color); /* Use the theme variable */
+
+}
+
+
+
+/* Feedback display section styling */
+
+.feedback-display {
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    background-color: var(--primary-bg); /* Use the theme variable */
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.feedback-display h2 {
+
+    color: var(--color); /* Use the theme variable */
+
+}
+
+
+
+.feedback-display ul {
+
+    list-style-type: none;
+
+    padding: 0;
+
+}
+
+
+
+.feedback-display li {
+
+    margin: 10px 0;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+    background-color: var(--secondary-bg); /* Use the theme variable */
+
+}
+
+
+
+/* Center text and adjust styles for headings */
+
+#Feedback h1, #Feedback h2 {
+
+    text-align: center;
+
+    color: var(--color); /* Use the theme variable */
+
+}
+
+
+
+/* Styles for the theme form */
+
+#themeForm {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    margin: 20px auto;
+
+    width: 300px;
+
+    padding: 20px;
+
+    border: 1px solid var(--border-bottom); /* Use border color variable */
+
+    border-radius: 10px;
+
+    background-color: var(--secondary-bg); /* Match background color with your site */
+
+}
+
+info-section{
+    grid-area: 2/ 2/ 3/ 4;
+}
+
