@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="styles/globalStyles.css"> <!-- Link to global CSS file -->
+    <link rel="stylesheet" href="styles/feedback.css">
+</head>
+<body class="default-theme">
+    <div class="grid-container">
+        <header class="header">
+            <h1>Feedback</h1>
+            <nav>
+                <div>
+                    <button onclick="location.href='../index.html';">Home</button>
+                    <button onclick="location.href='settings.html';">Settings/Profile</button>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="sidebar">
+            <h1>Would you like to give feedback?</h1>
+                    <button id="feedbackButton" onclick="toggleFeedbackForm()">Give Feedback</button>
+                    <div id="feedbackFormSection" class="feedback-form-section" style="display: none;">
+                        <h2>Feedback Form</h2>
+                        <form action="https://formspree.io/f/mjkbnqqp" method="POST" id="feedbackForm">
+                            <label for="feedbackEmail">Your Email:</label>
+                            <input type="email" id="feedbackEmail" name="email" required>
+                        
+                            <label for="feedbackName">Your Name:</label>
+                            <input type="text" id="feedbackName" name="name" required>
+                        
+                            <label for="feedback">Your Feedback:</label>
+                            <textarea id="feedback" name="message" rows="4" required></textarea>
+                        
+                            <button type="submit">Submit Feedback</button>
+                        </form>
+                        <p id="feedbackResponse"></p>
+                    </div>
+        </aside>
+
+
+        <footer class="footer">
+            <p>If you require any assistance or would like me to take the site down, please contact me at <a href="mailto:aarch0004@launchpadphilly.com">aarch0004@launchpadphilly.com</a>.</p>
+        </footer>
+    </div>
+
+    <script src="scripts/script.js"></script> <!-- Link to your scripts -->
+    <script>
+    window.onload = function() {
+    loadTheme()
+    loadUserData(); // Load saved data from local storage
+};
+    </script>
+</body>
+</html>

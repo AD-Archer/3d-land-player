@@ -312,8 +312,11 @@ button {
 #feedbackForm {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Space between inputs */
+    gap: 10px;
+    max-height: calc(100vh - 60px); /* Subtracts the height of the footer */
+    overflow-y: auto; /* Allows scrolling within the form if necessary */
 }
+
 
 /* Center text and adjust styles for headings */
 #Feedback h1, #Feedback h2 {

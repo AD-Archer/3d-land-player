@@ -4,31 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MMPlayer</title>
-    <link rel="stylesheet" href="styles\globalStyles.css">
+    <link rel="stylesheet" href="pages/styles/globalStyles.css"> <!-- Changed backslashes to forward slashes -->
     <!-- website icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
     <link rel="manifest" href="icons/site.webmanifest">
-
-
-
 </head>
 <body>
-    <!-- Start of grid -->
     <div class="grid-container">
         <header class="header">
-            <!-- inside header -->
             <h1>The 3D Land Music Playlist Player</h1>
             <nav>
                 <div>
                     <button onclick="location.href='index.html';">Home</button>
-                    <button onclick="location.href='settings.html';">Settings/Profile</button>
+                    <button onclick="location.href='pages/settings.html';">Settings/Profile</button>
                 </div>
             </nav>
         </header>
 
-        <!-- start of left sidebar -->
         <aside class="sidebar">
             <h1>Utilities</h1>
             <label for="playlistSelector">Choose a Playlist:</label>
@@ -52,16 +46,13 @@
                         <input type="radio" name="theme" value="purple" onclick="changeTheme('purple')">
                         Purple
                     </label>
-                    <p>lookings for more themes? check settings</p>
+                    <p>Looking for more themes? Check settings.</p> <!-- Corrected spelling -->
                 </form>
-                
-                
             </div>
-            
+
             <br>
             <section id="Feedback">
                 <center>
-                    <!-- This feedback is used by script -->
                     <h1>Would you like to give feedback?</h1>
                     <button id="feedbackButton" onclick="toggleFeedbackForm()">Give Feedback</button>
                     <div id="feedbackFormSection" class="feedback-form-section" style="display: none;">
@@ -76,30 +67,23 @@
                             <label for="feedback">Your Feedback:</label>
                             <textarea id="feedback" name="message" rows="4" required></textarea>
                         
-                            <!-- You can add other form fields here if needed -->
-                        
                             <button type="submit">Submit Feedback</button>
                         </form>
                         <p id="feedbackResponse"></p>
                     </div>
                 </center>
             </section>
-            
-            <!-- end of left side bar -->
         </aside>
-            <!-- start of div that holds video -->
+
         <section class="playlist-viewer">            
             <div id="videoName" class="videoName">Current Video: Super Mario 3D Land Introduction</div>
             <div class="video-wrapper">
                 <iframe id="youtubeVideo" src="" title="YouTube video player" allowfullscreen></iframe>
             </div>
-            <!-- this div is filled in using JS -->
             <div id="videoDescription" class="videoDescription"></div>
         </section>
 
-        
         <section class="playlist-section">
-            <!-- start of recommended playlists, this part is filled using JS -->
             <h2>Recommended</h2>
             <div id="randomPlaylists" class="playlist-container"></div>
         </section>
@@ -114,9 +98,7 @@
         </footer>
     </div>
 
-    
-
-    <script src="scripts\playlists.js"></script>
-    <script src="scripts\script.js"></script>
+    <script src="pages/scripts/playlists.js"></script> <!-- Changed backslashes to forward slashes -->
+    <script src="pages/scripts/script.js"></script> <!-- Changed backslashes to forward slashes -->
 </body>
 </html>
