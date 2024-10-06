@@ -1,12 +1,5 @@
-//playlist js file
-
-
-//initize videoData array, this is what the site uses to display video
-let videoData = []
-
-
 // Array of YouTube video URLs and information
-const mario = [
+const videoData = [
     { 
         "url": "https://www.youtube.com/embed/videoseries?si=rsFGG5S7woDDN9il&list=PLJGjdBsM0cguUT00NXKnQxDOpGzruSm6G", 
         "name": "Super Mario 3D Land Playlist",
@@ -101,5 +94,3 @@ const mario = [
     }
 ];
 
-//temporay until more videos are added and more logic is added
-videoData = mario
