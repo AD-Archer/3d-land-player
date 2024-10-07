@@ -4,73 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
-    <link rel="stylesheet" href="../styles/globalStyles.css"> <!-- Link to global CSS file -->
-    <link rel="stylesheet" href="../styles/feedback.css"> <!-- Link to feedback-specific CSS -->
+    <link rel="stylesheet" href="../styles/globalStyles.css">
+    <link rel="stylesheet" href="../styles/feedback.css">
 </head>
 <body class="default-theme">
-    <main class="grid-container">
-        <header class="header">
-            <div class="top-of-header">
-                <section class="header-item">
-                    <h4>Current Theme: <span id="current-theme">${theme}</span></h4>
-                </section>
-                <section class="header-item-center">
-                    <h1>Feedback</h1>
-                    <nav>
-                        <button onclick="location.href='/index.html';">Home</button>
-                        <button onclick="location.href='pages/settings.html';">Settings/Profile</button>
-                    </nav>
-                </section>
-                <section class="header-item">
-                    <h4>Current user:</h4> <span id="current-user"></span>
-                </section> 
-            </div>
-        </header>
-
+    <div class="container">
         <aside class="sidebar">
-            <h2>Would you like to give feedback?</h2>
-            <button id="feedbackButton" onclick="toggleFeedbackForm()">Give Feedback</button>
-            <section id="feedbackFormSection" class="feedback-form-section" style="display: none;">
-                <h3>Feedback Form</h3>
-                <form action="https://formspree.io/f/mjkbnqqp" method="POST" id="feedbackForm">
-                    <label for="feedbackEmail">Your Email:</label>
-                    <input type="email" id="feedbackEmail" name="email" required>
-
-                    <label for="feedbackName">Your Name:</label>
-                    <input type="text" id="feedbackName" name="name" required>
-
-                    <label for="feedback">Your Feedback:</label>
-                    <textarea id="feedback" name="message" rows="4" required></textarea>
-
-                    <button type="submit">Submit Feedback</button>
-                </form>
-                <p id="feedbackResponse"></p>
-            </section>
+            <h2>Account Information</h2>
+            <p><strong>Name:</strong> <span id="current-user"></span></p>
+            <p><strong>Email:</strong> </p>
         </aside>
 
-        <section class="info-section">
-            <h2>Why Your Feedback Matters</h2>
-            <p>Your insights help us improve the experience for everyone! Thank you for taking the time to share your thoughts.</p>
-        </section>
+        <main class="main-content">
+            <header>
+                <h1>Feedback</h1>
+                <nav>
+                    <button onclick="location.href='../index.html';">Home</button>
+                    <button onclick="location.href='settings.html';">Settings/Profile</button>
+                </nav>
+            </header>
 
-        <section class="recent-feedback">
-            <h2>Recent Feedback</h2>
-            <ul>
-                <!-- Feedback entries will be added here -->
-            </ul>
-        </section>
+            <section class="info-section">
+                <h2>Why Your Feedback Matters</h2>
+                <p>Your insights help us improve the experience for everyone! Thank you for taking the time to share your thoughts.</p>
+            </section>
 
-        <footer class="footer">
-            <p>If you need assistance or would like to take the site down, contact me at <a href="mailto:aarch0004@launchpadphilly.com">aarch0004@launchpadphilly.com</a>.</p>
-        </footer>
-    </main>
+            <section class="feedback-form-section">
+                <h3>Feedback Form</h3>
+                <form id="feedbackForm">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="username">Your Name:</label>
+                    <input type="text" id="username" name="name" required>
+                    <label for="feedback">Your Feedback:</label>
+                    <textarea id="feedback" name="message" rows="4" required></textarea>
+                    <button type="submit" id="submit">Submit Feedback</button>
+                </form>
+                <p id="feedbackResponse"></p>
+                
+            </section>
 
-    <script src="../scripts/script.js"></script> <!-- Link to your scripts -->
+            <footer>
+                <p>If you need assistance or would like to take the site down, contact me at <a href="mailto:aarch0004@launchpadphilly.com">aarch0004@launchpadphilly.com</a>.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../scripts/script.js"></script>
     <script>
         window.onload = function() {
             loadTheme();
-            loadUserData(); // Load saved data from local storage
+            loadUserData();  // Loads the user's name and email into the form
         };
+
+        // Event listener for feedback form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Save user data to local storage
+            saveUserData();
+
+            // Retrieve the user's name and feedback message from the form
+            const name = document.getElementById('username').value;
+            const feedbackMessage = document.getElementById('feedback').value;
+            const feedbackResponse = document.getElementById('feedbackResponse');
+
+            // Create feedback entry and update feedback list
+            const feedbackEntry = `${name}: ${feedbackMessage}`;
+            feedbacklist.push(feedbackEntry); 
+            displayFeedback(); 
+
+            // Display a thank you message
+            if (feedbackResponse) {
+                feedbackResponse.textContent = `Thank you, ${name}, for your feedback!`;
+            }
+
+            // Reset the form fields
+            event.target.reset(); 
+        });
     </script>
 </body>
 </html>

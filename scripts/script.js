@@ -115,13 +115,6 @@ function createThemeButtons() {
 }
 // ======================= Feedback Form Handling =======================
 
-// Toggle feedback form display
-function toggleFeedbackForm() {
-    const feedbackFormSection = document.getElementById('feedbackFormSection');
-    if (feedbackFormSection) {
-        feedbackFormSection.style.display = feedbackFormSection.style.display === 'none' ? 'block' : 'none';
-    }
-}
 
 // Function to save user data to local storage
 function saveUserData() {
@@ -148,20 +141,6 @@ function loadUserData() {
     }
 }
 
-
-let feedbacklist = []; // Initialize feedback list
-
-// Function to display feedback in the recent feedback section
-function displayFeedback() {
-    const feedbackContainer = document.querySelector('.recent-feedback ul');
-    feedbackContainer.innerHTML = ''; // Clear previous feedback display
-
-    feedbacklist.forEach(feedback => {
-        const listItem = document.createElement('li');
-        listItem.textContent = feedback;
-        feedbackContainer.appendChild(listItem);
-    });
-}
 
 // Event listener for feedback form submission
 document.getElementById('feedbackForm')?.addEventListener('submit', function(event) {
