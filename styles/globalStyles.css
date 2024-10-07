@@ -271,6 +271,7 @@ iframe {
     justify-content: center; /* Center the buttons */
     padding: 10px;
     background-color: var(--secondary-bg); /* Match sidebar color */
+    z-index: 10; /* Bring to front if overlapping with other elements */
 }
 
 /* Ensure buttons maintain size */
@@ -353,4 +354,23 @@ p {
     margin-top: 20px;              /* Space above the paragraph */
     text-align: center;            /* Center the text */
     color: var(--color);           /* Use the color variable for consistency */
+}
+
+/* Header items */
+.top-of-header {
+    display: flex;
+    justify-content: space-between; /* Distributes space between items */
+    align-items: center; /* Vertically centers items */
+    padding: 10px; /* Add some padding */
+}
+
+.header-item {
+    flex: auto; /* Each item takes equal space */
+    text-align: center; /* Center text for the header */
+    margin: 10px; /* Add margin around items */
+}
+
+.header-item-center{
+    padding-bottom: 10px;
+    transform: translateY(-13);
 }

@@ -10,11 +10,21 @@
 <body class="default-theme">
     <main class="grid-container">
         <header class="header">
-            <h1>Feedback</h1>
-            <nav>
-                <button onclick="location.href='../index.html';">Home</button>
-                <button onclick="location.href='settings.html';">Settings/Profile</button>
-            </nav>
+            <div class="top-of-header">
+                <section class="header-item">
+                    <h4>Current Theme: <span id="current-theme">${theme}</span></h4>
+                </section>
+                <section class="header-item-center">
+                    <h1>Feedback</h1>
+                    <nav>
+                        <button onclick="location.href='/index.html';">Home</button>
+                        <button onclick="location.href='pages/settings.html';">Settings/Profile</button>
+                    </nav>
+                </section>
+                <section class="header-item">
+                    <h4>Current user:</h4> <span id="current-user"></span>
+                </section> 
+            </div>
         </header>
 
         <aside class="sidebar">

@@ -10,35 +10,30 @@
 <body class="default-theme">
     <main class="grid-container">
         <header class="header">
-            <h1>Settings</h1> 
-            <nav>
-                <section>
-                    <button onclick="location.href='../index.html';">Home</button>
-                    <button onclick="location.href='settings.html';">Settings/Profile</button>
+            <div class="top-of-header">
+                <section class="header-item">
+                    <h4>Current Theme: <span id="current-theme">${theme}</span></h4>
                 </section>
-            </nav>
+                <section class="header-item-center">
+                    <h1>Settings</h1>
+                    <nav>
+                        <button onclick="location.href='/index.html';">Home</button>
+                        <button onclick="location.href='pages/settings.html';">Settings/Profile</button>
+                    </nav>
+                </section>
+                <section class="header-item">
+                    <h4>Current user:</h4> <span id="current-user"></span>
+                </section> 
+            </div>
         </header>
         
         <aside class="sidebar">
             <h2>Theme Selection</h2>
             <section id="theme-switcher">
-                <button onclick="changeTheme('default')">Default</button>
-                <button onclick="changeTheme('dark')">Dark</button>
-                <button onclick="changeTheme('light')">Light</button>
-                <button onclick="changeTheme('mint-green')">Mint Green</button>
-                <button onclick="changeTheme('icy')">Icy</button>
-                <button onclick="changeTheme('fire')">Fire</button>
-                <button onclick="changeTheme('halloween')">Halloween</button>
-                <button onclick="changeTheme('purple')">Purple</button>
-                <button onclick="changeTheme('pink')">Pink</button>
-                <button onclick="changeTheme('propeller-orange')">Propeller</button>
-                <button onclick="changeTheme('gray')">Gray</button>
-                <button onclick="changeTheme('bee')">Bee Colors</button>
-                <button onclick="changeTheme('sunset')">Sunset</button>
+                <!-- Theme buttons will be dynamically added here -->
             </section>
             <button id="save-settings">Save Settings</button>
         </aside>
-
         <section class="profile-section">
             <h2>User Profile</h2>
             <form>
@@ -69,11 +64,15 @@
         document.getElementById('save-settings').addEventListener('click', function() {
             saveUserData(); // Save data to local storage
             alert('Settings have been saved.');
+            location.reload();
         });
         document.getElementById('update-profile').addEventListener('click', function() {
             saveUserData(); // Save data to local storage
             alert('Profile has been saved.');
+            location.reload();
         });
+
+        createThemeButtons()
     </script>
 </body>
 </html>

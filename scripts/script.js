@@ -3,7 +3,8 @@ let currentVideoIndex = 0;
 const themes = [
     'default', 'dark', 'light', 'mint-green', 'icy', 'fire',
     'halloween', 'purple', 'pink', 'propeller-orange', 'gray',
-    'bee', 'sunset'
+    'bee', 'sunset', 'test'
+
 ];
 
 // ======================= Video Loading and Navigation =======================
@@ -97,17 +98,21 @@ function loadTheme() {
     document.body.classList.remove(...themes.map(t => `${t}-theme`));
     if (themes.includes(theme)) {
         document.body.classList.add(`${theme}-theme`);
+        // Update the current theme display
+        document.getElementById('current-theme').textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
     }
 }
 
-// Event listeners for theme buttons
-document.querySelectorAll('.theme-button').forEach(button => {
-    button.addEventListener('click', (event) => {
-        const selectedTheme = event.target.textContent;
-        changeTheme(selectedTheme);
+// Function to dynamically create theme buttons
+function createThemeButtons() {
+    const themeSwitcher = document.getElementById('theme-switcher');
+    themes.forEach(theme => {
+        const button = document.createElement('button');
+        button.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
+        button.addEventListener('click', () => changeTheme(theme));
+        themeSwitcher.appendChild(button);
     });
-});
-
+}
 // ======================= Feedback Form Handling =======================
 
 // Toggle feedback form display
@@ -139,8 +144,10 @@ function loadUserData() {
     if (username) {
         document.getElementById('username')?.setAttribute('value', username);
         document.getElementById('feedbackName')?.setAttribute('value', username);
+        document.getElementById('current-user').textContent = username; // Update the current user display
     }
 }
+
 
 let feedbacklist = []; // Initialize feedback list
 
@@ -224,9 +231,10 @@ function initializePage() {
         currentVideoIndex = parseInt(savedVideoIndex, 10);
     }
     loadVideo();
-    displayRandomPlaylists();
+    displayRandomPlaylists(); //displays random playlist to be changed later
     loadUserData();
-    loadTheme();
+    loadTheme(); 
+    createThemeButtons(); // Call the function to dynamically create theme buttons
 }
 
 // Initialize everything when the page loads
