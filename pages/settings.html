@@ -8,80 +8,72 @@
     <link rel="stylesheet" href="../styles/settingsStyles.css"> <!-- Link to css file-->
 </head>
 <body class="default-theme">
-    <div class="grid-container">
+    <main class="grid-container">
         <header class="header">
             <h1>Settings</h1> 
             <nav>
-                <div>
+                <section>
                     <button onclick="location.href='../index.html';">Home</button>
                     <button onclick="location.href='settings.html';">Settings/Profile</button>
-                </div>
+                </section>
             </nav>
         </header>
         
         <aside class="sidebar">
             <h2>Theme Selection</h2>
-                    <div id="theme-switcher">
-                        <button onclick="changeTheme('default')">Default</button>
-                        <button onclick="changeTheme('dark')">Dark</button>
-                        <button onclick="changeTheme('light')">Light</button>
-                        <button onclick="changeTheme('mint-green')">Mint Green</button>
-                        <button onclick="changeTheme('icy')">Icy</button>
-                        <button onclick="changeTheme('fire')">Fire</button>
-                        <button onclick="changeTheme('halloween')">Halloween</button>
-                        <button onclick="changeTheme('purple')">Purple</button>
-                        <button onclick="changeTheme('pink')">Pink</button>
-                        <button onclick="changeTheme('propeller-orange')">Propeller</button>
-                        <button onclick="changeTheme('gray')">Gray</button>
-                        <button onclick="changeTheme('bee')">Bee Colors</button>
-                        <button onclick="changeTheme('sunset')">Sunset</button>
-                    </div>
-                
-            
+            <section id="theme-switcher">
+                <button onclick="changeTheme('default')">Default</button>
+                <button onclick="changeTheme('dark')">Dark</button>
+                <button onclick="changeTheme('light')">Light</button>
+                <button onclick="changeTheme('mint-green')">Mint Green</button>
+                <button onclick="changeTheme('icy')">Icy</button>
+                <button onclick="changeTheme('fire')">Fire</button>
+                <button onclick="changeTheme('halloween')">Halloween</button>
+                <button onclick="changeTheme('purple')">Purple</button>
+                <button onclick="changeTheme('pink')">Pink</button>
+                <button onclick="changeTheme('propeller-orange')">Propeller</button>
+                <button onclick="changeTheme('gray')">Gray</button>
+                <button onclick="changeTheme('bee')">Bee Colors</button>
+                <button onclick="changeTheme('sunset')">Sunset</button>
+            </section>
             <button id="save-settings">Save Settings</button>
         </aside>
 
-        <div class="profile-section">
+        <section class="profile-section">
             <h2>User Profile</h2>
-            <br>
-            <br>
-            <div class="profile-field">
+            <form>
                 <label for="username">Username:</label>
-                <br>
                 <input type="text" id="username" placeholder="Enter your username">
-            </div>
-            <div class="profile-field">
+                
                 <label for="email">Email:</label>
-                <br>
                 <input type="email" id="email" placeholder="Enter your email">
-            </div>
-            <button id="update-profile">Update Profile</button>
-        </div>
+                
+                <button type="button" id="update-profile">Update Profile</button>
+            </form>
+        </section>
         
         <footer class="footer">
             <p>If you require any assistance or would like me to take the site down, please contact me at aarch0004@launchpadphilly.com.</p>
         </footer>
-    </div>
-    <script src="../scripts\script.js"></script>
+    </main>
 
+    <script src="../scripts/script.js"></script>
     <script>
-// Call the loadUserData function when the page loads
-    window.onload = function() {
-    loadTheme()
-    loadUserData(); // Load saved data from local storage
-};
+        // Call the loadUserData function when the page loads
+        window.onload = function() {
+            loadTheme();
+            loadUserData(); // Load saved data from local storage
+        };
 
-// Add an event listener for the Save button
-document.getElementById('save-settings').addEventListener('click', function() {
-    saveUserData(); // Save data to local storage
-    alert('Settings have been saved.');
-});
-document.getElementById('update-profile').addEventListener('click', function() {
-    saveUserData(); // Save data to local storage
-    alert('Profile have been saved.');
-});
-
+        // Add event listeners for saving settings and updating profile
+        document.getElementById('save-settings').addEventListener('click', function() {
+            saveUserData(); // Save data to local storage
+            alert('Settings have been saved.');
+        });
+        document.getElementById('update-profile').addEventListener('click', function() {
+            saveUserData(); // Save data to local storage
+            alert('Profile has been saved.');
+        });
     </script>
-  
 </body>
 </html>

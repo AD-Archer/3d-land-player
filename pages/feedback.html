@@ -8,56 +8,52 @@
     <link rel="stylesheet" href="../styles/feedback.css"> <!-- Link to feedback-specific CSS -->
 </head>
 <body class="default-theme">
-    <div class="grid-container">
+    <main class="grid-container">
         <header class="header">
             <h1>Feedback</h1>
             <nav>
-                <div>
-                    <button onclick="location.href='../index.html';">Home</button>
-                    <button onclick="location.href='settings.html';">Settings/Profile</button>
-                </div>
+                <button onclick="location.href='../index.html';">Home</button>
+                <button onclick="location.href='settings.html';">Settings/Profile</button>
             </nav>
         </header>
 
         <aside class="sidebar">
-            <h1>Would you like to give feedback?</h1>
+            <h2>Would you like to give feedback?</h2>
             <button id="feedbackButton" onclick="toggleFeedbackForm()">Give Feedback</button>
-            <div id="feedbackFormSection" class="feedback-form-section" style="display: none;">
-                <h2>Feedback Form</h2>
+            <section id="feedbackFormSection" class="feedback-form-section" style="display: none;">
+                <h3>Feedback Form</h3>
                 <form action="https://formspree.io/f/mjkbnqqp" method="POST" id="feedbackForm">
                     <label for="feedbackEmail">Your Email:</label>
                     <input type="email" id="feedbackEmail" name="email" required>
-                
+
                     <label for="feedbackName">Your Name:</label>
                     <input type="text" id="feedbackName" name="name" required>
-                
+
                     <label for="feedback">Your Feedback:</label>
                     <textarea id="feedback" name="message" rows="4" required></textarea>
-                
+
                     <button type="submit">Submit Feedback</button>
                 </form>
                 <p id="feedbackResponse"></p>
-            </div>
-            
-            <!-- Additional Information Section -->
-            
+            </section>
         </aside>
 
         <section class="info-section">
             <h2>Why Your Feedback Matters</h2>
             <p>Your insights help us improve the experience for everyone! Thank you for taking the time to share your thoughts.</p>
         </section>
-        <!-- Optional: Feedback Display Section -->
-        <section class="recent-feedback"> <!-- Named like this to move recent feedback to the site-->
+
+        <section class="recent-feedback">
             <h2>Recent Feedback</h2>
             <ul>
+                <!-- Feedback entries will be added here -->
             </ul>
         </section>
 
         <footer class="footer">
-            <p>If you require any assistance or would like me to take the site down, please contact me at <a href="mailto:aarch0004@launchpadphilly.com">aarch0004@launchpadphilly.com</a>.</p>
+            <p>If you need assistance or would like to take the site down, contact me at <a href="mailto:aarch0004@launchpadphilly.com">aarch0004@launchpadphilly.com</a>.</p>
         </footer>
-    </div>
+    </main>
 
     <script src="../scripts/script.js"></script> <!-- Link to your scripts -->
     <script>
