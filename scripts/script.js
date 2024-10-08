@@ -3,7 +3,7 @@ let currentVideoIndex = 0;
 const themes = [
     'default', 'dark', 'light', 'mint-green', 'icy', 'fire',
     'halloween', 'purple', 'pink', 'propeller-orange', 'gray',
-    'bee', 'sunset', 'test'
+    'bee', 'sunset'
 
 ];
 
@@ -98,8 +98,12 @@ function loadTheme() {
     document.body.classList.remove(...themes.map(t => `${t}-theme`));
     if (themes.includes(theme)) {
         document.body.classList.add(`${theme}-theme`);
-        // Update the current theme display
-        document.getElementById('current-theme').textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
+        
+        // Set the correct radio button based on the theme
+        const radioButton = document.querySelector(`input[name="theme"][value="${theme}"]`);
+        if (radioButton) {
+            radioButton.checked = true;
+        }
     }
 }
 
@@ -218,4 +222,3 @@ function initializePage() {
 
 // Initialize everything when the page loads
 window.onload = initializePage;
-

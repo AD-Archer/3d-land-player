@@ -162,6 +162,9 @@
 
 
 
+
+
+
 /* Global Styles */
 body {
     font-family: var(--default-font);
@@ -169,83 +172,81 @@ body {
     padding: 0;
     background-color: var(--primary-bg);
     color: var(--color);
-    font-size: var(--base-font-size); /* Set base font size */
+    font-size: var(--base-font-size);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* Grid layout */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-    grid-template-rows: 80px 1fr 1fr 60px; /* Adjusted row heights for header and footer */
-    gap: 0; /* Set gap to 0 for touching elements */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 80px 1fr 1fr 60px;
+    gap: 0;
     width: 100vw;
     height: 100vh;
-    
 }
 
 /* Grid Areas */
 .header {
-    grid-area: 1 / 1 / 2 / 5; /* Occupies 01, 02, 03, 04 */
+    grid-area: 1 / 1 / 2 / 5;
     background-color: var(--highlight-color);
     color: var(--secondary-color);
     text-align: center;
-    padding: 10px; /* Reduced padding for a smaller header */
-    border-bottom: 5px solid var(--border-bottom); /* Optional solid border color */
+    padding: 10px;
+    border-bottom: 5px solid var(--border-bottom);
 }
 
 .sidebar {
-    grid-area: 2 / 1 / 4 / 2; /* Occupies 05 */
+    grid-area: 2 / 1 / 4 / 2;
     background-color: var(--secondary-bg);
-    padding: 10px; /* Reduced padding */
+    padding: 10px;
 }
 
 .playlist-viewer, .info-section {
-    grid-area: 2 / 2 / 3 / 4; 
+    grid-area: 2 / 2 / 3 / 4;
     background-color: var(--content-bg);
-    padding: 10px; /* Adjusted padding */
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 10px; /* Space between video and title/description */
+    gap: 10px;
     color: var(--text-color);
 }
 
-
-.videoDescription, .videoName{
+.videoDescription, .videoName {
     background-color: var(--secondary-bg);
     padding: 20px;
     border-radius: 20px;
 }
 
 .playlist-section, .recent-feedback {
-    grid-area: 2 / 4 / 4 / 5; /* Adjust to occupy the right sidebar */
+    grid-area: 2 / 4 / 4 / 5;
     background-color: var(--secondary-bg);
     text-align: center;
-    padding: 5px; /* Space for titles */
-    border-radius: 5px; /* Add a subtle rounding for contrast */
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .footer {
-    grid-area: 4 / 1 / 5 / 5; /* Occupies 13, 14, 15, 16 */
+    grid-area: 4 / 1 / 5 / 5;
     background-color: var(--accent-color);
     text-align: center;
-    padding: 10px; /* Reduced padding for a smaller footer */
+    padding: 10px;
 }
 
-/* Styling for elements inside each section */
+/* Video styles */
 .video-wrapper {
     position: relative;
     width: 100%;
     padding-top: 56.25%; /* 16:9 Aspect Ratio */
     border-radius: 10px;
     overflow: hidden;
-    background-color: #000; /* Background for video wrapper */
-    margin-top: 10px; /* Space above the video */
+    background-color: #000; 
+    margin-top: 10px; 
 }
-
 
 iframe {
     position: absolute;
@@ -256,48 +257,47 @@ iframe {
     border: none;
 }
 
-/* Responsive behavior for smaller screens */
+/* Responsive behavior */
 @media (max-width: 768px) {
     .grid-container {
-        grid-template-columns: 1fr; /* Stacks items vertically on smaller screens */
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
     }
 }
 
 /* Button container */
 #button-container {
-    grid-area: 3 / 2 / 4 / 4; /* Positioning below the playlist viewer */
+    grid-area: 3 / 2 / 4 / 4;
     display: flex;
-    justify-content: center; /* Center the buttons */
+    justify-content: center; 
     padding: 10px;
-    background-color: var(--secondary-bg); /* Match sidebar color */
-    z-index: 10; /* Bring to front if overlapping with other elements */
+    background-color: var(--secondary-bg);
+    z-index: 10; 
 }
 
-/* Ensure buttons maintain size */
+/* Button styles */
 button {
     background-color: var(--accent-color);
     color: white;
     border: none;
-    padding: 8px 12px; /* Adjusted padding for smaller buttons */
-    font-size: var(--base-font-size); /* Use base font size */
+    padding: 8px 12px;
+    font-size: var(--base-font-size);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    flex: 1; /* Allow buttons to grow equally */
-    margin: 0 5px; /* Space between buttons */
-    min-width: 80px; /* Minimum width for consistent sizing */
+    flex: 1; 
+    margin: 0 5px; 
+    min-width: 80px; 
     border-radius: 2px;
 }
 
-/* Media buttons */
+/* Control buttons */
 .control-button {
     font-size: var(--larger-font-size);
     font-family: var(--default-font);
 }
 
-/* Ensures all buttons have the same height */
 .control-button:hover {
-    background-color: var(--highlight-color); /* Change color on hover */
+    background-color: var(--highlight-color); 
 }
 
 #theme-switcher {
@@ -316,61 +316,60 @@ button {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: calc(100vh - 60px); /* Subtracts the height of the footer */
-    overflow-y: auto; /* Allows scrolling within the form if necessary */
+    max-height: calc(100vh - 60px); 
+    overflow-y: auto; 
 }
 
-
-/* Center text and adjust styles for headings */
+/* Header styles */
 #Feedback h1, #Feedback h2 {
     text-align: center;
 }
 
-/* Styles for the theme form */
+/* Theme Form styles */
 #themeForm {
-    display: flex;                  /* Use flexbox layout */
-    flex-direction: column;        /* Stack items vertically */
-    align-items: flex-start;       /* Align items to the start for better alignment */
-    justify-content: center;       /* Center items vertically */
-    margin: 20px auto;             /* Center the form on the page with some margin */
-    width: 300px;                  /* Set a width for the form */
-    padding: 20px;                 /* Add padding */
-    border: 1px solid var(--border-bottom); /* Use border color variable */
-    border-radius: 10px;           /* Rounded corners for consistency */
-    background-color: var(--secondary-bg); /* Match background color with your site */
+    display: flex;                 
+    flex-direction: column;        
+    align-items: flex-start;       
+    justify-content: center;       
+    margin: 20px auto;             
+    width: 300px;                  
+    padding: 20px;                 
+    border: 1px solid var(--border-bottom); 
+    border-radius: 10px;           
+    background-color: var(--secondary-bg); 
 }
 
 label {
-    margin: 10px 0;                /* Space between labels */
-    display: flex;                 /* Use flexbox for label alignment */
-    align-items: center;           /* Center radio buttons with text */
+    margin: 10px 0;                
+    display: flex;                 
+    align-items: center;           
 }
 
 input[type="radio"] {
-    margin-right: 10px;            /* Space between radio button and label text */
+    margin-right: 10px;            
 }
 
 p {
-    margin-top: 20px;              /* Space above the paragraph */
-    text-align: center;            /* Center the text */
-    color: var(--color);           /* Use the color variable for consistency */
+    margin-top: 20px;              
+    text-align: center;            
+    color: var(--color);           
 }
 
 /* Header items */
 .top-of-header {
     display: flex;
-    justify-content: space-between; /* Distributes space between items */
-    align-items: center; /* Vertically centers items */
-    padding: 10px; /* Add some padding */
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px; 
 }
 
 .header-item {
-    flex: auto; /* Each item takes equal space */
-    text-align: center; /* Center text for the header */
-    margin: 10px; /* Add margin around items */
+    flex: auto; 
+    text-align: center; 
+    margin: 10px; 
 }
 
-.header-item-center{
+.header-item-center {
     padding-bottom: 10px;
-    transform: translateY(-13);
+    transform: translateY(-13px); /* Adjusted to px */
 }

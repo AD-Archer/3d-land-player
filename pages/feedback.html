@@ -9,11 +9,6 @@
 </head>
 <body class="default-theme">
     <div class="container">
-        <aside class="sidebar">
-            <h2>Account Information</h2>
-            <p><strong>Name:</strong> <span id="current-user"></span></p>
-            <p><strong>Email:</strong> </p>
-        </aside>
 
         <main class="main-content">
             <header>
@@ -23,6 +18,11 @@
                     <button onclick="location.href='settings.html';">Settings/Profile</button>
                 </nav>
             </header>
+            <aside class="infobar">
+                <h2>Account Information</h2>
+                <p><strong>Name:</strong> <span id="current-user"></span></p>
+                <p><strong>Email:</strong></p>
+            </aside>
 
             <section class="info-section">
                 <h2>Why Your Feedback Matters</h2>
@@ -41,7 +41,6 @@
                     <button type="submit" id="submit">Submit Feedback</button>
                 </form>
                 <p id="feedbackResponse"></p>
-                
             </section>
 
             <footer>

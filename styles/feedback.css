@@ -54,6 +54,12 @@ footer {
     width: 100%;
 }
 
+
+.infobar{
+background-color: var(--highlight-color);
+width: 25%;
+
+}
 /* Add responsive styles for smaller screens */
 @media (max-width: 768px) {
     .container {

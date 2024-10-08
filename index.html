@@ -16,7 +16,6 @@
         <header class="header">
             <div class="top-of-header">
                 <section class="header-item">
-                    <h4>Current Theme: <span id="current-theme">${theme}</span></h4>
                 </section>
                 <section class="header-item-center">
                     <h1>The 3D Land Music Playlist Player</h1>
@@ -26,7 +25,6 @@
                     </nav>
                 </section>
                 <section class="header-item">
-                    <h4>Current user:</h4> <span id="current-user"></span>
                 </section>                
             </div>
         </header>
@@ -84,8 +82,14 @@
             <p>If you require any assistance or would like me to take the site down, please contact me at <a href="mailto:aarch0004@launchpadphilly.com">aarch0004@launchpadphilly.com</a>.</p>
         </footer>
     </main>
-
+    
     <script src="scripts/playlists.js"></script>
     <script src="scripts/script.js"></script>
+    <script>
+     window.onload = function() {
+        initializePage()
+    };
+    </script>
+    
 </body>
 </html>
