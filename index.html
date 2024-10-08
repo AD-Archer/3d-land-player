@@ -53,12 +53,15 @@
                     <p>Looking for more themes? Check settings.</p>
                 </form>
             </section>
-
+        
             <section id="feedback">
                 <h2>Would you like to give feedback?</h2>
                 <button id="feedbackButton" onclick="location.href='pages/feedback.html';">Give Feedback</button>
             </section>
         </aside>
+        
+
+         
 
         <section class="playlist-viewer">
             <h2 id="videoName" class="videoName">Current Video: Super Mario 3D Land Introduction</h2>
@@ -86,9 +89,15 @@
     <script src="scripts/playlists.js"></script>
     <script src="scripts/script.js"></script>
     <script>
-     window.onload = function() {
-        initializePage()
-    };
+           window.onload = function() {
+            populatePlaylistSelector();
+            loadVideo();
+            displayRandomPlaylists(); // displays random playlists to be changed later
+            loadTheme(); // Load the saved theme
+            loadUserData();
+            
+}
+
     </script>
     
 </body>

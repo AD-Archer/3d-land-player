@@ -107,6 +107,8 @@ function loadTheme() {
     }
 }
 
+
+
 // Function to dynamically create theme buttons
 function createThemeButtons() {
     const themeSwitcher = document.getElementById('theme-switcher');
@@ -214,11 +216,12 @@ function initializePage() {
         currentVideoIndex = parseInt(savedVideoIndex, 10);
     }
     loadVideo();
-    displayRandomPlaylists(); //displays random playlist to be changed later
+    displayRandomPlaylists(); // displays random playlists to be changed later
     loadUserData();
-    loadTheme(); 
-    createThemeButtons(); // Call the function to dynamically create theme buttons
+    loadTheme(); // Load the saved theme
 }
+
+
 
 // Initialize everything when the page loads
 window.onload = initializePage;
