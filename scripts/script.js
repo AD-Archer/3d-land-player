@@ -136,14 +136,19 @@ function loadUserData() {
     const username = localStorage.getItem('username');
 
     if (email) {
-        document.getElementById('email')?.setAttribute('value', email);
-        document.getElementById('feedbackEmail')?.setAttribute('value', email);
+        const emailField = document.getElementById('email');
+        const feedbackEmailField = document.getElementById('feedbackEmail');
+        if (emailField) emailField.value = email; // Directly set value
+        if (feedbackEmailField) feedbackEmailField.value = email; // Directly set value
     }
 
     if (username) {
-        document.getElementById('username')?.setAttribute('value', username);
-        document.getElementById('feedbackName')?.setAttribute('value', username);
-        document.getElementById('current-user').textContent = username; // Update the current user display
+        const usernameField = document.getElementById('username');
+        const feedbackNameField = document.getElementById('feedbackName');
+        if (usernameField) usernameField.value = username; // Directly set value
+        if (feedbackNameField) feedbackNameField.value = username; // Directly set value
+        const currentUserDisplay = document.getElementById('current-user');
+        if (currentUserDisplay) currentUserDisplay.textContent = username; // Update the current user display
     }
 }
 
