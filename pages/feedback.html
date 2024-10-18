@@ -31,15 +31,26 @@
 
             <section class="feedback-form-section">
                 <h3>Feedback Form</h3>
-                <form id="feedbackForm">
-                    <label for="email">Your Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="username">Your Name:</label>
-                    <input type="text" id="username" name="name" required>
-                    <label for="feedback">Your Feedback:</label>
-                    <textarea id="feedback" name="message" rows="4" required></textarea>
-                    <button type="submit" id="submit">Submit Feedback</button>
-                </form>
+               <form id="profile-form">
+    <div class="profile-field">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username">
+    </div>
+
+    <div class="profile-field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+    </div>
+
+    <div class="profile-field">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password">
+    </div>
+
+    <button type="button" id="update-profile">Update Profile</button>
+    <p id="error-message" style="color: red;"></p>
+</form>
+
                 <p id="feedbackResponse"></p>
             </section>
 
