@@ -1,30 +1,20 @@
-import { useState } from 'react';
+import { useVideoContext } from '../contexts/VideoContext';
 import { videoData } from '../data/playlists';
 
 export function useVideoPlayer() {
-    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-
-    const nextVideo = () => {
-        setCurrentVideoIndex((prev) => (prev + 1) % videoData.length);
-    };
-
-    const previousVideo = () => {
-        setCurrentVideoIndex((prev) => 
-            (prev - 1 + videoData.length) % videoData.length
-        );
-    };
-
-    const setVideoByIndex = (index) => {
-        if (index >= 0 && index < videoData.length) {
-            setCurrentVideoIndex(index);
+    const context = useVideoContext();
+    
+    const setCurrentVideo = (playlist) => {
+        const index = videoData.findIndex(video => video.url === playlist.url);
+        if (index !== -1) {
+            context.setVideoByIndex(index);
         }
     };
 
     return {
-        currentVideo: videoData[currentVideoIndex],
-        currentVideoIndex,
-        nextVideo,
-        previousVideo,
-        setVideoByIndex
+        currentVideo: context.currentVideo,
+        setCurrentVideo,
+        nextVideo: context.nextVideo,
+        previousVideo: context.previousVideo
     };
 } 
