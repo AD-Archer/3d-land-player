@@ -1,8 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Container, Row, Col, Navbar, Nav, Form, Button, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
+import { Header } from '../../components/Header/Header';
 import styles from './Feedback.module.css';
 
 const themes = [
@@ -22,9 +22,8 @@ const themes = [
 ];
 
 const Feedback = () => {
-    const [feedbackList, setFeedbackList] = React.useState([]); // Manage feedback list
+    const [feedbackList, setFeedbackList] = React.useState([]);
     const [successMessage, setSuccessMessage] = React.useState('');
-    const [errorMessage, setErrorMessage] = React.useState('');
 
     const formik = useFormik({
         initialValues: {
@@ -38,34 +37,24 @@ const Feedback = () => {
             feedbackMessage: Yup.string().required('Feedback message cannot be empty'),
         }),
         onSubmit: (values, { resetForm }) => {
-            const feedbackEntry = `${values.username}: ${values.feedbackMessage}`;
-            setFeedbackList((prevList) => [...prevList, feedbackEntry]); // Update feedback list
+            const feedbackEntry = {
+                username: values.username,
+                message: values.feedbackMessage,
+                date: new Date().toLocaleDateString()
+            };
+            setFeedbackList(prev => [feedbackEntry, ...prev]);
             setSuccessMessage(`Thank you, ${values.username}, for your feedback!`);
             resetForm();
+            
+            // Clear success message after 3 seconds
+            setTimeout(() => setSuccessMessage(''), 3000);
         },
     });
 
     return (
         <div className={styles.container}>
-            <Navbar bg="dark" variant="dark" expand="lg" className={styles.navbar}>
-                <Container>
-                    <Navbar.Brand as={Link} to="/" style={{ fontFamily: "'Press Start 2P', cursive", fontSize: '1rem' }}>
-                        3D Land Player
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ms-auto" style={{ fontFamily: "'Press Start 2P', cursive", fontSize: '0.7rem' }}>
-                            <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/settings">Settings</Nav.Link>
-                            <Nav.Link as={Link} to="/feedback">Feedback</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-
-            {/* Separator Line */}
-            <hr className={styles.separator} />
-
+            <Header />
+            
             <Container fluid className={styles.main}>
                 <Row>
                     <Col lg={12}>
@@ -76,10 +65,10 @@ const Feedback = () => {
                 <Row className="justify-content-center">
                     <Col lg={8}>
                         <div className={styles.feedbackCard}>
-                            <h2 className={styles.sectionTitle}>Leave Your Feedback</h2>
-                            <Form onSubmit={formik.handleSubmit} className={styles.profileForm}>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Username:</Form.Label>
+                            <h2 className={styles.sectionTitle}>Share Your Thoughts</h2>
+                            <Form onSubmit={formik.handleSubmit}>
+                                <Form.Group className="mb-4">
+                                    <Form.Label>Username</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="username"
@@ -87,15 +76,15 @@ const Feedback = () => {
                                         onBlur={formik.handleBlur}
                                         value={formik.values.username}
                                         isInvalid={formik.touched.username && !!formik.errors.username}
-                                        placeholder="Enter your username"
+                                        className={styles.formControl}
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         {formik.errors.username}
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Email:</Form.Label>
+                                <Form.Group className="mb-4">
+                                    <Form.Label>Email</Form.Label>
                                     <Form.Control
                                         type="email"
                                         name="email"
@@ -103,47 +92,58 @@ const Feedback = () => {
                                         onBlur={formik.handleBlur}
                                         value={formik.values.email}
                                         isInvalid={formik.touched.email && !!formik.errors.email}
-                                        placeholder="Enter your email"
+                                        className={styles.formControl}
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         {formik.errors.email}
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Feedback:</Form.Label>
+                                <Form.Group className="mb-4">
+                                    <Form.Label>Your Feedback</Form.Label>
                                     <Form.Control
                                         as="textarea"
-                                        rows={3}
+                                        rows={4}
                                         name="feedbackMessage"
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.feedbackMessage}
                                         isInvalid={formik.touched.feedbackMessage && !!formik.errors.feedbackMessage}
-                                        placeholder="Enter your feedback"
+                                        className={styles.formControl}
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         {formik.errors.feedbackMessage}
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
-                                <Button type="submit" className={styles.updateButton}>
-                                    Submit Feedback
-                                </Button>
+                                <div className={styles.buttonContainer}>
+                                    <Button type="submit" className={styles.submitButton}>
+                                        Submit Feedback
+                                    </Button>
+                                </div>
                             </Form>
 
-                            {errorMessage && <Alert variant="danger" className="mt-3">{errorMessage}</Alert>}
-                            {successMessage && <Alert variant="success" className="mt-3">{successMessage}</Alert>}
+                            {successMessage && (
+                                <Alert variant="success" className={`mt-4 ${styles.alert}`}>
+                                    {successMessage}
+                                </Alert>
+                            )}
                         </div>
 
-                        <div className={styles.feedbackList}>
-                            <h3>Feedback List</h3>
-                            <ul>
+                        {feedbackList.length > 0 && (
+                            <div className={styles.feedbackList}>
+                                <h3 className={styles.listTitle}>Recent Feedback</h3>
                                 {feedbackList.map((feedback, index) => (
-                                    <li key={index}>{feedback}</li>
+                                    <div key={index} className={styles.feedbackItem}>
+                                        <div className={styles.feedbackHeader}>
+                                            <span className={styles.username}>{feedback.username}</span>
+                                            <span className={styles.date}>{feedback.date}</span>
+                                        </div>
+                                        <p className={styles.message}>{feedback.message}</p>
+                                    </div>
                                 ))}
-                            </ul>
-                        </div>
+                            </div>
+                        )}
                     </Col>
                 </Row>
             </Container>
