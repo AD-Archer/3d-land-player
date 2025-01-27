@@ -1,88 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Player Settings</title>
-    <link rel="stylesheet" href="../styles/globalStyles.css"> <!-- Link to global CSS file -->
-    <link rel="stylesheet" href="../styles/settingsStyles.css"> <!-- Link to CSS file -->
-</head>
-<body class="default-theme">
+    <link rel="stylesheet" href="../styles/globalStyles.css" />
+    <!-- Link to global CSS file -->
+    <link rel="stylesheet" href="../styles/settingsStyles.css" />
+    <!-- Link to CSS file -->
+  </head>
+  <body class="default-theme">
     <main class="grid-container">
-        <header class="header">
-            <div class="top-of-header">
-                <section class="header-item">
-                    <h4>Current Theme: <span id="current-theme">${theme}</span></h4>
-                </section>
-                <section class="header-item-center">
-                    <h1>Settings</h1>
-                    <nav>
-                        <button onclick="location.href='/index.html';">Home</button>
-                        <button onclick="location.href='pages/settings.html';">Settings/Profile</button>
-                    </nav>
-                </section>
-                <section class="header-item">
-                    <h4>Current user:</h4> <span id="current-user"></span>
-                </section> 
-            </div>
-        </header>
+      <header class="header">
+        <div class="top-of-header">
+          <section class="header-item">
+            <h4>Current Theme: <span id="current-theme">${theme}</span></h4>
+          </section>
+          <section class="header-item-center">
+            <h1>Settings</h1>
+            <nav>
+              <button onclick="location.href='/index.html';">Home</button>
+              <button onclick="location.href='pages/settings.html';">
+                Settings/Profile
+              </button>
+            </nav>
+          </section>
+          <section class="header-item">
+            <h4>Current user:</h4>
+            <span id="current-user"></span>
+          </section>
+        </div>
+      </header>
 
-        <aside class="sidebar">
-            <h2>Theme Selection</h2>
-            <section id="theme-switcher">
-                <!-- Theme buttons will be dynamically added here -->
-            </section>
-            <button id="save-settings">Save Settings</button>
-        </aside>
-
-        <section class="profile-section">
-            <h2>User Profile</h2>
-            <form id="profile-form">
-                <div class="profile-field">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" placeholder="Enter your username">
-                </div>
-
-                <div class="profile-field">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Enter your email">
-                </div>
-
-                <div class="profile-field">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" placeholder="Enter your password">
-                </div>
-
-                <button type="button" id="update-profile">Update Profile</button>
-            </form>
+      <aside class="sidebar">
+        <h2>Theme Selection</h2>
+        <section id="theme-switcher">
+          <!-- Theme buttons will be dynamically added here -->
         </section>
+        <button id="save-settings">Save Settings</button>
+      </aside>
 
-        <footer class="footer">
-            <p>If you require any assistance or would like me to take the site down, please contact me at aarch0004@launchpadphilly.com.</p>
-        </footer>
+      <section class="profile-section">
+        <h2>User Profile</h2>
+        <form id="profile-form">
+    <div class="profile-field">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username">
+    </div>
+
+    <div class="profile-field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+    </div>
+
+    <div class="profile-field">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password">
+    </div>
+
+    <button type="submit" id="update-profile">Update Profile</button>
+    <p id="error-message" style="color: red;"></p>
+</form>
+      </section>
+
+      <footer class="footer">
+        <p>
+          If you require any assistance or would like me to take the site down,
+          please contact me at aarch0004@launchpadphilly.com.
+        </p>
+      </footer>
     </main>
 
     <script src="../scripts/script.js"></script>
     <script>
-        // Call the loadUserData function when the page loads
-        window.onload = function() {
-            loadUserData(); // Load saved data from local storage
-            loadTheme();
-        };
+      // Call the loadUserData function when the page loads
+      window.onload = function () {
+        loadUserData(); // Load saved data from local storage
+        loadTheme();
+      };
 
-        // Add event listeners for saving settings and updating profile
-        document.getElementById('save-settings').addEventListener('click', function() {
-            saveUserData(); // Save data to local storage
-            alert('Settings have been saved.');
-            location.reload();
+      // Add event listeners for saving settings and updating profile
+      document
+        .getElementById("save-settings")
+        .addEventListener("click", function () {
+          saveUserData(); // Save data to local storage
+          alert("Settings have been saved.");
+          location.reload();
         });
-        document.getElementById('update-profile').addEventListener('click', function() {
-            saveUserData(); // Save data to local storage
-            alert('Profile has been saved.');
-            location.reload();
-        });
+      
 
-        createThemeButtons();
+      createThemeButtons();
     </script>
-</body>
+  </body>
 </html>
