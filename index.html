@@ -1,104 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMPlayer</title>
-    <link rel="stylesheet" href="styles/globalStyles.css">
-    <!-- website icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="manifest" href="icons/site.webmanifest">
-</head>
-<body>
-    <main class="grid-container">
-        <header class="header">
-            <div class="top-of-header">
-                <section class="header-item">
-                </section>
-                <section class="header-item-center">
-                    <h1>The 3D Land Music Playlist Player</h1>
-                    <nav>
-                        <button onclick="location.href='/index.html';">Home</button>
-                        <button onclick="location.href='pages/settings.html';">Settings/Profile</button>
-                    </nav>
-                </section>
-                <section class="header-item">
-                </section>                
-            </div>
-        </header>
-         
-
-        <aside class="sidebar">
-            <h2>Utilities</h2>
-            <label for="playlistSelector">Choose a Playlist:</label>
-            <select id="playlistSelector"></select>
-            
-            <section id="theme-switcher-index">
-                <h3>Themes:</h3>
-                <form id="themeForm">
-                    <label>
-                        <input type="radio" name="theme" value="default" onclick="changeTheme('default')"> Default
-                    </label>
-                    <label>
-                        <input type="radio" name="theme" value="dark" onclick="changeTheme('dark')"> Dark
-                    </label>
-                    <label>
-                        <input type="radio" name="theme" value="light" onclick="changeTheme('light')"> Starman
-                    </label>
-                    <label>
-                        <input type="radio" name="theme" value="purple" onclick="changeTheme('purple')"> Purple
-                    </label>
-                    <p>Looking for more themes? Check settings.</p>
-                </form>
-            </section>
-        
-            <section id="feedback">
-                <h2>Would you like to give feedback?</h2>
-                <button id="feedbackButton" onclick="location.href='pages/feedback.html';">Give Feedback</button>
-            </section>
-        </aside>
-        
-
-         
-
-        <section class="playlist-viewer">
-            <h2 id="videoName" class="videoName">Current Video: Super Mario 3D Land Introduction</h2>
-            <div class="video-wrapper">
-                <iframe id="youtubeVideo" src="" title="YouTube video player" allowfullscreen></iframe>
-            </div>
-            <p id="videoDescription" class="videoDescription"></p>
-        </section>
-
-        <section class="playlist-section">
-            <h2>Recommended</h2>
-            <div id="randomPlaylists" class="playlist-container"></div>
-        </section>
-
-        <section id="button-container" class="button-container">
-            <button class="control-button" id="prevButton">Last Playlist</button>
-            <button class="control-button" id="nextButton">Next Playlist</button>
-        </section>
-
-        <footer class="footer">
-            <p>If you require any assistance or would like me to take the site down, please contact me at <a href="mailto:aarch0004@launchpadphilly.com">aarch0004@launchpadphilly.com</a>.</p>
-        </footer>
-    </main>
-    
-    <script src="scripts/playlists.js"></script>
-    <script src="scripts/script.js"></script>
-    <script>
-           window.onload = function() {
-            populatePlaylistSelector();
-            loadVideo();
-            displayRandomPlaylists(); // displays random playlists to be changed later
-            loadTheme(); // Load the saved theme
-            loadUserData();
-            
-}
-
-    </script>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
