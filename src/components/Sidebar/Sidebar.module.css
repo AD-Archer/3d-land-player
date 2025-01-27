@@ -1,0 +1,112 @@
+.sidebar {
+    background-color: var(--secondary-bg);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 4px solid var(--border-bottom);
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar :global(.accordion-button) {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    padding: 1rem;
+}
+
+.sidebar :global(.accordion-button:not(.collapsed)) {
+    background-color: var(--highlight-color);
+    color: var(--secondary-color);
+}
+
+.sidebar :global(.accordion-body) {
+    background-color: var(--secondary-bg);
+    color: var(--color);
+    padding: 1rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color);
+}
+
+.quickLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.quickLinks button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+}
+
+.themeButtons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.themeButton {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    padding: 0.5rem;
+    border: 2px solid var(--border-bottom);
+}
+
+.themeNote {
+    color: var(--secondary-text);
+    font-size: 0.875rem;
+    margin: 0;
+    text-align: center;
+}
+
+/* Style form elements */
+:global(.form-label) {
+    color: var(--color);
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+}
+
+:global(.form-select) {
+    background-color: var(--content-bg);
+    border: 2px solid var(--border-bottom);
+    color: var(--color);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+}
+
+:global(.form-select:focus) {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--accent-color-rgb), 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .sidebar {
+        margin-top: 2rem;
+    }
+}
+
+.section p {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.themeGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+} 

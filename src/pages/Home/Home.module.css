@@ -1,10 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--primary-bg);
+    font-family: 'Press Start 2P', cursive;
 }
 
 .main {
     flex: 1;
-    padding: 2rem 0;
+    padding: 1rem 0 3rem;
+    background-color: var(--content-bg);
+}
+
+.title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--color);
+    text-shadow: 2px 2px 0px var(--accent-color);
+    animation: rainbow 4s infinite;
+    padding: 1rem;
+    letter-spacing: 2px;
+}
+
+.videoSection {
+    background-color: var(--secondary-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 4px solid var(--border-bottom);
+}
+
+.controlsSection {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.footer {
+    padding: 1rem 0;
+    background-color: var(--accent-color);
+    border-top: 4px solid var(--border-bottom);
+    margin-top: auto;
+    font-size: 0.7rem;
+    color: var(--secondary-color);
+}
+
+.footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--highlight-color);
+    text-decoration: none;
+}
+
+@keyframes rainbow {
+    0% { color: var(--color); }
+    25% { color: var(--accent-color); }
+    50% { color: var(--highlight-color); }
+    75% { color: var(--accent-color); }
+    100% { color: var(--color); }
+}
+
+@media (max-width: 991.98px) {
+    .main {
+        padding: 1rem 1rem 2rem;
+    }
+
+    .title {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
 } 

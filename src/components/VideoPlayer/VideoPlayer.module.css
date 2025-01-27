@@ -1,0 +1,44 @@
+.videoCard {
+    margin-bottom: 2rem;
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px 4px 0 0;
+}
+
+.videoTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: var(--secondary-text);
+    margin-bottom: 1.5rem;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.fact {
+    font-style: italic;
+    color: var(--secondary-text);
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+} 
