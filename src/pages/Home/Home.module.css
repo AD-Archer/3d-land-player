@@ -6,12 +6,17 @@
     flex-direction: column;
     background-color: var(--primary-bg);
     font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 .main {
     flex: 1;
     padding: 1rem 0 3rem;
     background-color: var(--content-bg);
+    width: 100%;
+    margin: 0;
 }
 
 .title {

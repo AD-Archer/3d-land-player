@@ -23,7 +23,7 @@ export default function Home() {
                 </Container>
             </Navbar>
 
-            <Container className={styles.main}>
+            <Container fluid className={styles.main}>
                 <Row>
                     <Col lg={12}>
                         <h1 className={styles.title}>The 3D Land Music Playlist Player</h1>
