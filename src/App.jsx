@@ -11,7 +11,7 @@ function App() {
     return (
         <ThemeProvider>
             <VideoProvider>
-                <Routes>
+                <Routes basename="/3d-land-player">
                     <Route path="/" element={<Home />} />
                     <Route path="/settings" element={<Settings />} />
                     <Route path="/feedback" element={<Feedback />} />
