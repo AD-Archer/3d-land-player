@@ -7,7 +7,7 @@ import './styles/globalStyles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/3d-land-player">
       <App />
     </BrowserRouter>
   </React.StrictMode>

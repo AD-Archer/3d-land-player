@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "https://ad-archer.github.io/3d-land-player/",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
